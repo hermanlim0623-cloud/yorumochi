@@ -10,7 +10,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="180x180" href="/images/yoru_mochi_favicon.png">
 
-  <!-- Open Graph -->
+  <!-- Open Graph (preserve from original) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yorumochi.com/">
   <meta property="og:title" content="Yoru & Mochi — Cute Daily Pet Adventures">
@@ -21,13 +21,12 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:alt" content="Yoru & Mochi — cute guinea pigs">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yoru & Mochi — Cute Daily Pet Adventures">
   <meta name="twitter:description" content="Daily joyful shorts — pet adventures, cute moments, and tiny discoveries.">
   <meta name="twitter:image" content="https://yorumochi.com/images/yoru_mochi_og.jpg?v=1">
 
-  <!-- Schema JSON-LD (PRO compact) -->
+  <!-- Schema JSON-LD (preserve) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -51,45 +50,32 @@
         ],
         "description":"Yoru & Mochi — Daily joyful shorts: pet adventures, cute moments, and tiny discoveries.",
         "foundingDate":"2025"
-      },
-      {
-        "@type":"WebSite",
-        "@id":"https://yorumochi.com/#website",
-        "url":"https://yorumochi.com/",
-        "name":"Yoru & Mochi",
-        "publisher":{"@id":"https://yorumochi.com/#organization"}
-      },
-      {
-        "@type":"WebPage",
-        "@id":"https://yorumochi.com/#homepage",
-        "url":"https://yorumochi.com/",
-        "name":"Yoru & Mochi — Cute Daily Pet Adventures",
-        "isPartOf":{"@id":"https://yorumochi.com/#website"},
-        "primaryImageOfPage":{"@id":"https://yorumochi.com/images/yoru_mochi_og.jpg?v=1"},
-        "inLanguage":"id"
       }
     ]
   }
   </script>
 
-  <!-- Minimal CSS: Cute Soft 3D style -->
+  <!-- Combined CSS: dark 3D theme + carousel from newer design -->
   <style>
     :root{
-      --bg:#071026;
-      --panel:#0f1724;
-      --soft:#0b2233;
-      --accent:#ffd88a;
-      --muted:#9fb4c8;
-      --text:#e6eef8;
-      --glass: rgba(255,255,255,0.03);
+      --bg:#f7f8fa;
+      --panel:#ffffff;
+      --soft:#f6f2ef;
+      --accent:#FFD9B6; /* peach */
+      --muted:#9aa7b0; /* soft grey-blue */
+      --text:#3b4752; /* darker for pastel theme */
+      --text-dark:#071026;
+      --glass: rgba(255,255,255,0.7);
+      --gold: #FFE18A; /* pastel yellow */
+      --dot:#ffdca8;
+      --shadow: 0 12px 30px rgba(30,40,50,0.08);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(12,30,45,0.35), transparent 10%),
-                  linear-gradient(180deg,#061024 0%,#071527 100%);
+      background: linear-gradient(135deg, #d8f3ff 0%, #ffe6e0 50%, #eaffea 100%);
       color:var(--text);
       display:flex;
       align-items:center;
@@ -97,75 +83,58 @@
       padding:28px;
     }
 
-    .wrap{width:100%;max-width:820px;padding:18px}
+    /* decorative soft circles */
+    body::before,
+    body::after{
+      content:'';position:fixed;pointer-events:none;border-radius:50%;filter: blur(36px);opacity:0.6;
+    }
+    body::before{width:260px;height:260px;left:8%;top:6%;background:radial-gradient(circle,#d8f3ff,#d8f3ff00)}
+    body::after{width:220px;height:220px;right:6%;bottom:8%;background:radial-gradient(circle,#ffdfe3,#ffdfe300)}
 
-    /* 3D card container */
+    .wrap{width:100%;max-width:380px;padding:18px}
+
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,250,247,0.9));
+      border-radius:18px;
       padding:22px;
-      box-shadow:
-        0 18px 40px rgba(3,9,18,0.65),
-        inset 0 1px 0 rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
-      transform-style:preserve-3d;
-      transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
-      will-change:transform;
-      backdrop-filter: blur(6px) saturate(120%);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.6);
+      transition:transform .28s cubic-bezier(.2,.9,.2,1);
+      position: relative;
+      overflow: visible;
     }
 
-    .card:hover{ transform: translateY(-6px) rotateX(1deg); box-shadow: 0 34px 70px rgba(3,9,18,0.7) }
+    .hero{display:block;gap:12px;align-items:center;text-align:center;padding-top:8px}
+    .avatar-wrap{display:none}
 
-    .hero{display:flex;gap:18px;align-items:center}
-    .avatar-wrap{
-      width:104px;height:104px;border-radius:22px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.06));
-      display:flex;align-items:center;justify-content:center;
-      box-shadow: 0 12px 30px rgba(2,8,20,0.6), inset 0 -6px 10px rgba(0,0,0,0.35);
-      transform-style:preserve-3d;
-      transition: transform .35s cubic-bezier(.2,.9,.2,1);
-      border: 1px solid rgba(255,255,255,0.04);
-    }
-    .avatar-wrap img{
-      width:88px;height:88px;border-radius:18px;object-fit:cover;
-      display:block; transform: translateZ(20px);
-      box-shadow: 0 6px 18px rgba(2,8,20,0.6);
-      border: 2px solid rgba(255,255,255,0.04);
-    }
+    h1{margin:8px 0 0;font-size:20px;color:var(--text);font-weight:700}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
 
-    h1{margin:0;font-size:22px;letter-spacing: -0.2px}
-    p.lead{margin:8px 0 0;color:var(--muted);font-size:13px;max-width:54ch}
+    .carousel-container { position: relative; width:100%; margin-top:16px; border-radius:14px; overflow:hidden; /* changed to hidden so side slides are clipped */ }
+    .carousel-track { display:flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform; width:100%; }
+    .carousel-slide { min-width:100%; padding:0; display:flex; align-items:center; justify-content:center; text-align:center; box-sizing:border-box; }
+    .carousel-slide .slide-content { max-width:320px; width:86%; background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,247,0.95)); border-radius:14px; padding:22px; box-shadow: 0 10px 30px rgba(25,35,45,0.06); border:1px solid rgba(0,0,0,0.03); margin: 0 auto; }
 
-    .meta{display:flex;gap:10px;margin-top:10px;color:var(--muted);font-size:12px;align-items:center}
+    .carousel-track { display:flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform }
+    .carousel-slide { min-width:100%; padding:18px; display:flex; align-items:center; justify-content:center; text-align:center; }
+    .carousel-slide .slide-content { max-width:320px; background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,250,247,0.85)); border-radius:14px; padding:22px; box-shadow: 0 10px 30px rgba(25,35,45,0.06); border:1px solid rgba(0,0,0,0.03) }
+    .slide-icon { font-size:2.4rem; margin-bottom:0.6rem; display:block }
+    .slide-title { font-size:16px; font-weight:700; margin-bottom:6px }
+    .slide-description { color:var(--muted); margin-bottom:12px; font-size:13px }
 
-    /* links list */
-    .links{margin-top:18px;display:grid;gap:12px}
-    .btn{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:12px;padding:14px 16px;border-radius:12px;text-decoration:none;color:var(--text);
-      background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(0,0,0,0.02));
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 6px 18px rgba(2,8,20,0.5);
-      transition: transform .18s ease, box-shadow .18s ease;
-      font-weight:600;
-    }
-    .btn:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(2,8,20,0.6) }
-    .btn .left {display:flex;align-items:center;gap:12px}
-    .btn .icon{
-      width:36px;height:36px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
-      border:1px solid rgba(255,255,255,0.03);
-      color:var(--muted);font-size:14px;
-    }
-    .btn .arrow{opacity:.9;color:var(--muted)}
+    .cta-button { display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 1.1rem; background: linear-gradient(180deg,var(--gold), #FFE9AD); color:var(--text-dark); border-radius:999px; font-weight:700; text-decoration:none; box-shadow: 0 8px 20px rgba(255,200,120,0.22); border: none }
 
-    .footer{margin-top:16px;text-align:center;color:var(--muted);font-size:12px}
-    .muted-link{color:var(--muted);text-decoration:none}
+    .nav-button { position:absolute; top:50%; transform:translateY(-50%); background: rgba(255,255,255,0.95); border:none; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:4; color:var(--text); box-shadow: 0 6px 18px rgba(20,30,40,0.06) }
+    .nav-button.prev { left:-8px }
+    .nav-button.next { right:-8px }
 
-    @media(max-width:640px){
-      .hero{flex-direction:row}
-      .avatar-wrap{width:84px;height:84px}
-    }
+    .pagination { display:flex; justify-content:center; gap:0.5rem; margin-top:12px }
+    .pagination-dot { width:10px; height:10px; border-radius:50%; background: rgba(255,255,255,0.8); border:none; box-shadow: 0 3px 8px rgba(20,30,40,0.06) }
+    .pagination-dot.active { background: var(--dot) }
+
+    .footer{margin-top:12px;text-align:center;color:var(--muted);font-size:12px}
+
+    @media(min-width:900px){ .wrap{max-width:900px} .avatar-wrap{display:block} }
   </style>
 </head>
 <body>
@@ -178,77 +147,118 @@
 
         <div style="flex:1">
           <h1>Yoru & Mochi</h1>
-          <p class="lead">Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Subscribe & follow to never miss new shorts.</p>
+          <p class="lead">Daily joyful shorts  pet adventures, cute moments, and tiny discoveries. Subscribe & follow to never miss new shorts.</p>
           <div class="meta">Official • Short videos • Minimal site</div>
         </div>
       </div>
 
-      <div class="links" style="margin-top:18px">
-        <a class="btn" href="https://www.youtube.com/@YoruMochi-2306" target="_blank" rel="noopener noreferrer">
-          <span class="left"><span class="icon">▶</span> Watch on YouTube</span>
-          <span class="arrow">→</span>
-        </a>
+      <!-- Carousel (merged from index baru) -->
+      <div class="carousel-container" role="region" aria-label="Social media platform navigation">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 3: Watch on YouTube">
+            <div class="slide-content">
+              <span class="slide-icon" aria-hidden="true">▶</span>
+              <h2 class="slide-title">Watch on YouTube</h2>
+              <p class="slide-description">Daily joyful shorts  Yoru & Mochi</p>
+              <a href="https://www.youtube.com/@YoruMochi-2306" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Watch Yoru & Mochi on YouTube">Buka →</a>
+            </div>
+          </div>
 
-        <a class="btn" href="https://www.instagram.com/yoru.mochi" target="_blank" rel="noopener noreferrer">
-          <span class="left"><span class="icon">📸</span> Instagram</span>
-          <span class="arrow">→</span>
-        </a>
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 3: Watch on TikTok">
+            <div class="slide-content">
+              <span class="slide-icon" aria-hidden="true">🎵</span>
+              <h2 class="slide-title">Watch on TikTok</h2>
+              <p class="slide-description">Tiny adventures & short clips</p>
+              <a href="https://www.tiktok.com/@yoru.mochi" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Watch Yoru & Mochi on TikTok">Buka →</a>
+            </div>
+          </div>
 
-        <a class="btn" href="https://www.tiktok.com/@yoru.mochi" target="_blank" rel="noopener noreferrer">
-          <span class="left"><span class="icon">🎵</span> TikTok</span>
-          <span class="arrow">→</span>
-        </a>
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 3: Follow on Instagram">
+            <div class="slide-content">
+              <span class="slide-icon" aria-hidden="true">📸</span>
+              <h2 class="slide-title">Follow on Instagram</h2>
+              <p class="slide-description">Behind-the-scenes & photos</p>
+              <a href="https://www.instagram.com/yoru.mochi" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Follow Yoru & Mochi on Instagram">Buka →</a>
+            </div>
+          </div>
+        </div>
 
-        <a class="btn" href="https://linktr.ee/YoruMochi" target="_blank" rel="noopener noreferrer">
-          <span class="left"><span class="icon">🔗</span> More links (Linktree)</span>
-          <span class="arrow">→</span>
-        </a>
+        <button class="nav-button prev" type="button" aria-label="Previous slide">‹</button>
+        <button class="nav-button next" type="button" aria-label="Next slide">›</button>
       </div>
 
-      <!-- internal nav small -->
-      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
-        <a class="muted-link" href="/about.html">About</a>
-        <span style="color:var(--muted)">•</span>
-        <a class="muted-link" href="/story.html">Story</a>
-        <span style="color:var(--muted)">•</span>
-        <a class="muted-link" href="/faq.html">FAQ</a>
+      <div class="pagination" role="tablist" aria-label="Slide navigation">
+        <button class="pagination-dot active" type="button" aria-label="Go to slide 1"></button>
+        <button class="pagination-dot" type="button" aria-label="Go to slide 2"></button>
+        <button class="pagination-dot" type="button" aria-label="Go to slide 3"></button>
       </div>
 
       <div class="footer">
-        Made with ♥ • Yoru & Mochi — Lightweight landing • <a class="muted-link" href="/sitemap.xml">Sitemap</a>
+        Made with ♥ • Yoru & Mochi  Lightweight landing • <a href="/sitemap.xml" style="color:var(--muted);text-decoration:none">Sitemap</a>
       </div>
     </div>
   </div>
 
-  <!-- Small JS: tilt avatar on mouse move (subtle 3D) -->
+  <!-- Combined JS: tilt effect (from old) + slider (from new) -->
   <script>
     (function(){
       const avatarWrap = document.getElementById('avatarWrap');
       const mainCard = document.getElementById('mainCard');
       const avatarImg = document.getElementById('avatarImg');
 
-      // tilt effect for desktop
       function onMove(e){
         const rect = mainCard.getBoundingClientRect();
         const x = (e.clientX - rect.left) - rect.width/2;
         const y = (e.clientY - rect.top) - rect.height/2;
-        const rx = - (y / rect.height) * 6; // rotateX
-        const ry = (x / rect.width) * 6; // rotateY
+        const rx = - (y / rect.height) * 6;
+        const ry = (x / rect.width) * 6;
         mainCard.style.transform = `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg)`;
         avatarWrap.style.transform = `translateZ(12px) rotateX(${rx*0.6}deg) rotateY(${ry*0.6}deg)`;
       }
-      function onLeave(){
-        mainCard.style.transform = '';
-        avatarWrap.style.transform = '';
-      }
-      if(window.matchMedia('(hover: hover)').matches){
-        mainCard.addEventListener('mousemove', onMove);
-        mainCard.addEventListener('mouseleave', onLeave);
-      }
-
-      // make sure image loads fast; fallback alt
+      function onLeave(){ mainCard.style.transform=''; avatarWrap.style.transform=''; }
+      if(window.matchMedia('(hover: hover)').matches){ mainCard.addEventListener('mousemove', onMove); mainCard.addEventListener('mouseleave', onLeave); }
       avatarImg.addEventListener('error', ()=>{ avatarImg.style.opacity=0.85 });
     })();
+
+    // Slider implementation (lightweight, adapted)
+    class YoruMochiSlider {
+      constructor(options={}){
+        this.track = document.getElementById('carouselTrack');
+        this.slides = this.track.querySelectorAll('.carousel-slide');
+        this.prev = document.querySelector('.nav-button.prev');
+        this.next = document.querySelector('.nav-button.next');
+        this.dots = document.querySelectorAll('.pagination-dot');
+        this.total = this.slides.length;
+        this.current = 0;
+        this.autoplay = options.autoplay !== false;
+        this.interval = options.interval || 4000;
+        this.timer = null;
+        this.init();
+      }
+      init(){
+        this.update();
+        this.prev.addEventListener('click', ()=>this.prevSlide());
+        this.next.addEventListener('click', ()=>this.nextSlide());
+        this.dots.forEach((d,i)=>d.addEventListener('click', ()=>this.goTo(i)));
+        const container = document.querySelector('.carousel-container');
+        container.addEventListener('mouseenter', ()=>this.pause());
+        container.addEventListener('mouseleave', ()=>this.play());
+        this.start();
+      }
+      update(){
+        this.track.style.transform = `translateX(${ -this.current * 100 }%)`;
+        this.slides.forEach((s,i)=> s.classList.toggle('active', i===this.current));
+        this.dots.forEach((d,i)=> d.classList.toggle('active', i===this.current));
+      }
+      nextSlide(){ this.current = (this.current+1)%this.total; this.update(); }
+      prevSlide(){ this.current = (this.current-1+this.total)%this.total; this.update(); }
+      goTo(i){ this.current = i%this.total; this.update(); }
+      start(){ if(this.autoplay) this.timer = setInterval(()=>this.nextSlide(), this.interval); }
+      pause(){ if(this.timer){ clearInterval(this.timer); this.timer=null } }
+      play(){ if(!this.timer) this.start(); }
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{ window.slider = new YoruMochiSlider({autoplay:true, interval:4000}); });
   </script>
 </body>
 </html>
