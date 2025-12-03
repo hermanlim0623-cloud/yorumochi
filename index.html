@@ -145,12 +145,45 @@
 
     @media(min-width:900px){ .wrap{max-width:900px} .avatar-wrap{display:block} }
   
-/* Hide large header/banner images (non-destructive) */
-.avatar-wrap, .hero img, .hero-banner, .hero .banner { display: none !important; }
+/* Use header image as a blurred background inside the card so the menu is the focus */
+    .avatar-wrap { display: none !important; } /* keep small avatar hidden */
 
-/* If there is any full-width banner image inserted elsewhere, make sure it doesn't overflow */
-img.fullwidth, img.banner-img { max-width: 100% !important; height: auto !important; display: none !important; }
-</style>
+    .card{ position:relative; z-index:3; overflow:visible; /* keep card above the background layer */ }
+
+    .card::before{
+      content: '';
+      position: absolute;
+      left: 50%; top: 0;
+      transform: translateX(-50%) scale(1.04);
+      width: 140%;
+      height: 60%;
+      background-image: url('/images/yoru_mochi_og.jpg?v=1');
+      background-size: cover;
+      background-position: center center;
+      filter: blur(14px) saturate(110%) brightness(0.94);
+      border-radius: 18px;
+      z-index:1;
+      opacity: 0.98;
+      pointer-events: none;
+    }
+
+    /* subtle white overlay to soften the blur and keep text readable */
+    .card::after{
+      content: '';
+      position: absolute;
+      inset: 0 0 0 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,250,247,0.65));
+      border-radius: 18px;
+      z-index:2;
+      pointer-events: none;
+    }
+
+    /* ensure internal content sits above the background */
+    .card > * { position: relative; z-index:3 }
+
+    /* safety: hide any leftover banner/fullwidth images if present */
+    img.fullwidth, img.banner-img { display: none !important; max-width:100% !important; height:auto !important; }
+  </style>
 </head>
 <body>
   <div class="wrap">
