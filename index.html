@@ -41,22 +41,84 @@ Sudah di-update dengan:
   <meta name="twitter:image" content="https://yorumochi.com/images/yoru_mochi_og.jpg">
 
   <!-- Schema.org JSON-LD (Organization + sameAs social links) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Yoru & Mochi",
-    "url": "https://yorumochi.com/",
-    "logo": "https://yorumochi.com/images/yoru_mochi_og.jpg",
-    "sameAs": [
-      "https://www.youtube.com/@YoruMochi-2306",
-      "https://www.instagram.com/yoru.mochi",
-      "https://www.tiktok.com/@yoru.mochi",
-      "https://linktr.ee/YoruMochi"
-    ],
-    "description": "Daily joyful shorts and stories of Yoru & Mochi."
-  }
-  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://yorumochi.com/#organization",
+      "name": "Yoru & Mochi",
+      "url": "https://yorumochi.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://yorumochi.com/images/yoru_mochi_og.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "sameAs": [
+        "https://www.youtube.com/@YoruMochi-2306",
+        "https://www.instagram.com/yoru.mochi",
+        "https://www.tiktok.com/@yoru.mochi",
+        "https://linktr.ee/YoruMochi"
+      ],
+      "description": "Yoru & Mochi — Daily joyful shorts: pet adventures, cute moments, and tiny discoveries.",
+      "foundingDate": "2025",
+      "primarySite": {
+        "@id": "https://yorumochi.com/#website"
+      }
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://yorumochi.com/#brand",
+      "name": "Yoru & Mochi",
+      "url": "https://yorumochi.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://yorumochi.com/images/yoru_mochi_og.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "description": "Official brand for Yoru & Mochi — cute guinea pig shorts and daily content."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://yorumochi.com/#website",
+      "url": "https://yorumochi.com/",
+      "name": "Yoru & Mochi",
+      "description": "Official Yoru & Mochi website — links to YouTube, Instagram, TikTok, and latest updates.",
+      "publisher": {
+        "@id": "https://yorumochi.com/#organization"
+      },
+      "inLanguage": "id"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://yorumochi.com/#homepage",
+      "url": "https://yorumochi.com/",
+      "name": "Yoru & Mochi — Cute Daily Pet Adventures",
+      "description": "Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, Instagram, and TikTok.",
+      "isPartOf": {
+        "@id": "https://yorumochi.com/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://yorumochi.com/images/yoru_mochi_og.jpg"
+      },
+      "inLanguage": "id",
+      "datePublished": "2025-12-04",
+      "dateModified": "2025-12-04"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://yorumochi.com/images/yoru_mochi_og.jpg",
+      "url": "https://yorumochi.com/images/yoru_mochi_og.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "Yoru & Mochi"
+    }
+  ]
+}
+</script>
 
   <!-- Minimal critical CSS inline -->
   <style>
@@ -97,7 +159,7 @@ Sudah di-update dengan:
         <div>
           <h1>Yoru & Mochi</h1>
           <p class="lead">
-            Daily joyful shorts — pet adventures, cute moments, and tiny discoveries.
+            Daily joyful shorts  pet adventures, cute moments, and tiny discoveries.
             Subscribe & follow to never miss new shorts.
           </p>
           <div class="meta">Official • Short videos • Minimal site</div>
