@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Yoru & Mochi — Official</title>
-  <meta name="description" content="Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, Instagram & TikTok." />
+  <meta name="description" content="Daily joyful shorts  pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, Instagram & TikTok." />
   <link rel="canonical" href="https://yorumochi.com/" />
 
   <!-- Favicon -->
@@ -113,7 +113,16 @@
     .carousel-container { position: relative; width:100%; margin-top:16px; border-radius:14px; overflow:hidden; /* changed to hidden so side slides are clipped */ }
     .carousel-track { display:flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform; width:100%; }
     .carousel-slide { min-width:100%; padding:0; display:flex; align-items:center; justify-content:center; text-align:center; box-sizing:border-box; }
-    .carousel-slide .slide-content { max-width:320px; width:86%; background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,247,0.95)); border-radius:14px; padding:22px; box-shadow: 0 10px 30px rgba(25,35,45,0.06); border:1px solid rgba(0,0,0,0.03); margin: 0 auto; }
+    .carousel-slide .slide-content {
+      max-width:380px;
+      width:92%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,247,0.95));
+      border-radius:18px;
+      padding:32px 26px;
+      box-shadow: 0 14px 34px rgba(25,35,45,0.09);
+      border:1px solid rgba(0,0,0,0.04);
+      margin: 0 auto;
+    }
 
     .carousel-track { display:flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform }
     .carousel-slide { min-width:100%; padding:18px; display:flex; align-items:center; justify-content:center; text-align:center; }
@@ -132,7 +141,7 @@
     .pagination-dot { width:10px; height:10px; border-radius:50%; background: rgba(255,255,255,0.8); border:none; box-shadow: 0 3px 8px rgba(20,30,40,0.06) }
     .pagination-dot.active { background: var(--dot) }
 
-    .footer{margin-top:12px;text-align:center;color:var(--muted);font-size:12px}
+    .footer{ display: none !important; /* hidden non-destructive: can re-enable by removing this rule */ }
 
     @media(min-width:900px){ .wrap{max-width:900px} .avatar-wrap{display:block} }
   </style>
@@ -147,8 +156,8 @@
 
         <div style="flex:1">
           <h1>Yoru & Mochi</h1>
-          <p class="lead">Daily joyful shorts  pet adventures, cute moments, and tiny discoveries. Subscribe & follow to never miss new shorts.</p>
-          <div class="meta">Official • Short videos • Minimal site</div>
+          <p class="lead">Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Subscribe & follow to never miss new shorts.</p>
+          <div class="meta">Official • Short videos </div>
         </div>
       </div>
 
@@ -194,7 +203,7 @@
       </div>
 
       <div class="footer">
-        Made with ♥ • Yoru & Mochi  Lightweight landing • <a href="/sitemap.xml" style="color:var(--muted);text-decoration:none">Sitemap</a>
+        Made with ♥ • Yoru & Mochi — Lightweight landing • <a href="/sitemap.xml" style="color:var(--muted);text-decoration:none">Sitemap</a>
       </div>
     </div>
   </div>
