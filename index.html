@@ -107,7 +107,9 @@
     .hero{display:block;gap:12px;align-items:center;text-align:center;padding-top:8px}
     .avatar-wrap{display:none}
 
-    h1{margin:8px 0 0;font-size:20px;color:var(--text);font-weight:700}
+    h1{margin:8px 0 0;font-size:20px;color:var(--text);font-weight:700; text-shadow: none;}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px;opacity:0.95}
+    .meta{color: #56626b; font-weight:600; margin-top:6px}
     p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
 
     .carousel-container { position: relative; width:100%; margin-top:16px; border-radius:14px; overflow:hidden; /* changed to hidden so side slides are clipped */ }
@@ -160,19 +162,22 @@
       background-image: url('/images/yoru_mochi_og.jpg?v=1');
       background-size: cover;
       background-position: center center;
-      filter: blur(14px) saturate(110%) brightness(0.94);
+      /* soften the background and slightly darken so text pops */
+      filter: blur(14px) saturate(105%) brightness(0.78);
       border-radius: 18px;
       z-index:1;
-      opacity: 0.98;
+      opacity: 0.95;
       pointer-events: none;
     }
 
-    /* subtle white overlay to soften the blur and keep text readable */
+    /* stronger overlay to ensure text contrast */
     .card::after{
       content: '';
       position: absolute;
       inset: 0 0 0 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,250,247,0.65));
+      /* slightly more opaque white with subtle top shadow for readability */
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,250,247,0.88));
+      box-shadow: inset 0 40px 80px rgba(0,0,0,0.04);
       border-radius: 18px;
       z-index:2;
       pointer-events: none;
