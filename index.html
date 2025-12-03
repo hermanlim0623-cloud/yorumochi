@@ -1,13 +1,9 @@
 <!--
 YORU & MOCHI - Minimal SEO-friendly landing page
-Instructions:
-1. Replace placeholders (SITE_TITLE, DESCRIPTION, IMAGE_URL, SOCIAL LINKS) below.
-2. Upload this single file to any static host (Netlify, Vercel, GitHub Pages).
-3. To verify in Google Search Console: use "URL prefix" and verify via Google Analytics (add GA4 ID in the GA4_PLACEHOLDER) or via HTML file upload to your own domain.
-4. To use a custom domain, point DNS to your host and add the domain in Search Console (use DNS verification).
-5. Optional: create /sitemap.xml and robots.txt on the same host.
-
-This page intentionally uses zero third-party render-blocking JS. Only lightweight inline CSS and a small inline JSON-LD schema.
+Sudah di-update dengan:
+- Domain resmi: https://yorumochi.com
+- OG image + favicon
+- Social links terbaru
 -->
 
 <!doctype html>
@@ -15,21 +11,32 @@ This page intentionally uses zero third-party render-blocking JS. Only lightweig
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Yoru & Mochi — Official</title>
-  <meta name="description" content="Yoru & Mochi — daily joyful shorts, toys & adventures. Official page listing socials and latest videos.">
-  <meta name="keywords" content="Yoru, Mochi, shorts, pets, guinea pigs, YoruMochi">
+
+  <!-- Primary Meta -->
+  <title>Yoru & Mochi — Cute Daily Pet Adventures</title>
+  <meta name="title" content="Yoru & Mochi — Cute Daily Pet Adventures">
+  <meta name="description" content="Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, Instagram, and TikTok untuk tidak ketinggalan video baru.">
+  <meta name="keywords" content="Yoru, Mochi, YoruMochi, guinea pigs, cute pets, shorts, funny pets">
+  <link rel="canonical" href="https://yorumochi.com/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="180x180" href="/images/yoru_mochi_favicon.png">
 
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="Yoru & Mochi — Official">
-  <meta property="og:description" content="Daily joyful shorts with Yoru & Mochi. Watch on YouTube and follow on socials.">
-  <meta property="og:image" content="https://example.com/yoru-mochi-cover.jpg">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yoru-mochi.example/">
+  <meta property="og:url" content="https://yorumochi.com/">
+  <meta property="og:title" content="Yoru & Mochi — Cute Daily Pet Adventures">
+  <meta property="og:description" content="Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi di YouTube, Instagram, dan TikTok.">
+  <meta property="og:image" content="https://yorumochi.com/images/yoru_mochi_og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yoru & Mochi — Official">
-  <meta name="twitter:description" content="Daily joyful shorts with Yoru & Mochi. Watch on YouTube and follow on socials.">
-  <meta name="twitter:image" content="https://example.com/yoru-mochi-cover.jpg">
+  <meta name="twitter:url" content="https://yorumochi.com/">
+  <meta name="twitter:title" content="Yoru & Mochi — Cute Daily Pet Adventures">
+  <meta name="twitter:description" content="Daily joyful shorts — pet adventures, cute moments, and tiny discoveries.">
+  <meta name="twitter:image" content="https://yorumochi.com/images/yoru_mochi_og.jpg">
 
   <!-- Schema.org JSON-LD (Organization + sameAs social links) -->
   <script type="application/ld+json">
@@ -37,12 +44,13 @@ This page intentionally uses zero third-party render-blocking JS. Only lightweig
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Yoru & Mochi",
-    "url": "https://yoru-mochi.example/",
-    "logo": "https://example.com/yoru-mochi-cover.jpg",
+    "url": "https://yorumochi.com/",
+    "logo": "https://yorumochi.com/images/yoru_mochi_og.jpg",
     "sameAs": [
-      "https://www.youtube.com/@YoruMochi",
-      "https://www.instagram.com/yorumochi",
-      "https://www.tiktok.com/@yorumochi"
+      "https://www.youtube.com/@YoruMochi-2306",
+      "https://www.instagram.com/yoru.mochi",
+      "https://www.tiktok.com/@yoru.mochi",
+      "https://linktr.ee/YoruMochi"
     ],
     "description": "Daily joyful shorts and stories of Yoru & Mochi."
   }
@@ -68,8 +76,7 @@ This page intentionally uses zero third-party render-blocking JS. Only lightweig
     @media(min-width:640px){h1{font-size:24px}}
   </style>
 
-  <!-- Optional: add Google Analytics GA4 measurement ID here to enable GSC verification via GA -->
-  <!-- Replace 'G-XXXXXXXXXX' with real ID if available -->
+  <!-- Optional: Google Analytics GA4 (isi kalau sudah punya ID) -->
   <!--
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -84,22 +91,36 @@ This page intentionally uses zero third-party render-blocking JS. Only lightweig
   <div class="wrap">
     <div class="card" role="main">
       <div class="hero">
-        <img class="avatar" src="https://example.com/yoru-avatar.jpg" alt="Yoru & Mochi">
+        <img class="avatar" src="/images/yoru_mochi_og.jpg" alt="Yoru & Mochi logo">
         <div>
           <h1>Yoru & Mochi</h1>
-          <p class="lead">Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Subscribe & follow to never miss new shorts.</p>
+          <p class="lead">
+            Daily joyful shorts — pet adventures, cute moments, and tiny discoveries.
+            Subscribe & follow to never miss new shorts.
+          </p>
           <div class="meta">Official • Short videos • Minimal site</div>
         </div>
       </div>
 
       <div class="links">
-        <a class="btn" href="https://www.youtube.com/@YoruMochi" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube <span class="arrow">→</span></a>
-        <a class="btn" href="https://instagram.com/yorumochi" target="_blank" rel="noopener noreferrer">📸 Instagram <span class="arrow">→</span></a>
-        <a class="btn" href="https://tiktok.com/@yorumochi" target="_blank" rel="noopener noreferrer">🎵 TikTok <span class="arrow">→</span></a>
-        <a class="btn" href="https://linktr.ee/YoruMochi" target="_blank" rel="noopener noreferrer">🔗 More links (Linktree) <span class="arrow">→</span></a>
+        <a class="btn" href="https://www.youtube.com/@YoruMochi-2306" target="_blank" rel="noopener noreferrer">
+          ▶ Watch on YouTube <span class="arrow">→</span>
+        </a>
+        <a class="btn" href="https://www.instagram.com/yoru.mochi" target="_blank" rel="noopener noreferrer">
+          📸 Instagram <span class="arrow">→</span>
+        </a>
+        <a class="btn" href="https://www.tiktok.com/@yoru.mochi" target="_blank" rel="noopener noreferrer">
+          🎵 TikTok <span class="arrow">→</span>
+        </a>
+        <a class="btn" href="https://linktr.ee/YoruMochi" target="_blank" rel="noopener noreferrer">
+          🔗 More links (Linktree) <span class="arrow">→</span>
+        </a>
       </div>
 
-      <div class="footer">Made with ♥ • Yoru & Mochi — Lightweight landing • <a href="/sitemap.xml" style="color:var(--accent);text-decoration:none">Sitemap</a></div>
+      <div class="footer">
+        Made with ♥ • Yoru & Mochi — Lightweight landing
+        • <a href="/sitemap.xml" style="color:var(--accent);text-decoration:none">Sitemap</a>
+      </div>
     </div>
   </div>
 </body>
