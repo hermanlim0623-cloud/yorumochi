@@ -1,0 +1,106 @@
+<!--
+YORU & MOCHI - Minimal SEO-friendly landing page
+Instructions:
+1. Replace placeholders (SITE_TITLE, DESCRIPTION, IMAGE_URL, SOCIAL LINKS) below.
+2. Upload this single file to any static host (Netlify, Vercel, GitHub Pages).
+3. To verify in Google Search Console: use "URL prefix" and verify via Google Analytics (add GA4 ID in the GA4_PLACEHOLDER) or via HTML file upload to your own domain.
+4. To use a custom domain, point DNS to your host and add the domain in Search Console (use DNS verification).
+5. Optional: create /sitemap.xml and robots.txt on the same host.
+
+This page intentionally uses zero third-party render-blocking JS. Only lightweight inline CSS and a small inline JSON-LD schema.
+-->
+
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Yoru & Mochi — Official</title>
+  <meta name="description" content="Yoru & Mochi — daily joyful shorts, toys & adventures. Official page listing socials and latest videos.">
+  <meta name="keywords" content="Yoru, Mochi, shorts, pets, guinea pigs, YoruMochi">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Yoru & Mochi — Official">
+  <meta property="og:description" content="Daily joyful shorts with Yoru & Mochi. Watch on YouTube and follow on socials.">
+  <meta property="og:image" content="https://example.com/yoru-mochi-cover.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yoru-mochi.example/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yoru & Mochi — Official">
+  <meta name="twitter:description" content="Daily joyful shorts with Yoru & Mochi. Watch on YouTube and follow on socials.">
+  <meta name="twitter:image" content="https://example.com/yoru-mochi-cover.jpg">
+
+  <!-- Schema.org JSON-LD (Organization + sameAs social links) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Yoru & Mochi",
+    "url": "https://yoru-mochi.example/",
+    "logo": "https://example.com/yoru-mochi-cover.jpg",
+    "sameAs": [
+      "https://www.youtube.com/@YoruMochi",
+      "https://www.instagram.com/yorumochi",
+      "https://www.tiktok.com/@yorumochi"
+    ],
+    "description": "Daily joyful shorts and stories of Yoru & Mochi."
+  }
+  </script>
+
+  <!-- Minimal critical CSS inline -->
+  <style>
+    :root{--bg:#0b1220;--card:#0f1724;--accent:#7dd3fc;--muted:#9fb4c8;--text:#e6eef8}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:linear-gradient(180deg,#071025 0%,#071527 100%);color:var(--text);display:flex;align-items:center;justify-content:center;padding:24px}
+    .wrap{width:100%;max-width:720px}
+    .card{background:rgba(6,10,18,0.6);border-radius:16px;padding:22px;box-shadow:0 6px 24px rgba(2,6,12,0.6)}
+    .hero{display:flex;gap:16px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:18px;object-fit:cover;border:2px solid rgba(255,255,255,0.04)}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .links{margin-top:18px;display:grid;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;text-decoration:none;color:inherit;background:linear-gradient(90deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);font-weight:600}
+    .btn .arrow{opacity:.85}
+    .meta{display:flex;gap:10px;margin-top:12px;color:var(--muted);font-size:12px}
+    .footer{margin-top:14px;text-align:center;color:var(--muted);font-size:12px}
+    @media(min-width:640px){h1{font-size:24px}}
+  </style>
+
+  <!-- Optional: add Google Analytics GA4 measurement ID here to enable GSC verification via GA -->
+  <!-- Replace 'G-XXXXXXXXXX' with real ID if available -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="main">
+      <div class="hero">
+        <img class="avatar" src="https://example.com/yoru-avatar.jpg" alt="Yoru & Mochi">
+        <div>
+          <h1>Yoru & Mochi</h1>
+          <p class="lead">Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Subscribe & follow to never miss new shorts.</p>
+          <div class="meta">Official • Short videos • Minimal site</div>
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="btn" href="https://www.youtube.com/@YoruMochi" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube <span class="arrow">→</span></a>
+        <a class="btn" href="https://instagram.com/yorumochi" target="_blank" rel="noopener noreferrer">📸 Instagram <span class="arrow">→</span></a>
+        <a class="btn" href="https://tiktok.com/@yorumochi" target="_blank" rel="noopener noreferrer">🎵 TikTok <span class="arrow">→</span></a>
+        <a class="btn" href="https://linktr.ee/YoruMochi" target="_blank" rel="noopener noreferrer">🔗 More links (Linktree) <span class="arrow">→</span></a>
+      </div>
+
+      <div class="footer">Made with ♥ • Yoru & Mochi — Lightweight landing • <a href="/sitemap.xml" style="color:var(--accent);text-decoration:none">Sitemap</a></div>
+    </div>
+  </div>
+</body>
+</html>
