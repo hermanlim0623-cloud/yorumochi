@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Yoru & Mochi — Official</title>
-  <meta name="description" content="Daily joyful shorts  pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, Instagram & TikTok." />
+  <meta name="description" content="Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, Instagram & TikTok." />
   <link rel="canonical" href="https://yorumochi.com/" />
 
   <!-- Favicon -->
@@ -144,7 +144,13 @@
     .footer{ display: none !important; /* hidden non-destructive: can re-enable by removing this rule */ }
 
     @media(min-width:900px){ .wrap{max-width:900px} .avatar-wrap{display:block} }
-  </style>
+  
+/* Hide large header/banner images (non-destructive) */
+.avatar-wrap, .hero img, .hero-banner, .hero .banner { display: none !important; }
+
+/* If there is any full-width banner image inserted elsewhere, make sure it doesn't overflow */
+img.fullwidth, img.banner-img { max-width: 100% !important; height: auto !important; display: none !important; }
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -157,7 +163,7 @@
         <div style="flex:1">
           <h1>Yoru & Mochi</h1>
           <p class="lead">Daily joyful shorts — pet adventures, cute moments, and tiny discoveries. Subscribe & follow to never miss new shorts.</p>
-          <div class="meta">Official • Short videos </div>
+          <div class="meta">Official • Short videos • Minimal site</div>
         </div>
       </div>
 
@@ -168,7 +174,7 @@
             <div class="slide-content">
               <span class="slide-icon" aria-hidden="true">▶</span>
               <h2 class="slide-title">Watch on YouTube</h2>
-              <p class="slide-description">Daily joyful shorts  Yoru & Mochi</p>
+              <p class="slide-description">Daily joyful shorts — Yoru & Mochi</p>
               <a href="https://www.youtube.com/@YoruMochi-2306" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Watch Yoru & Mochi on YouTube">Buka →</a>
             </div>
           </div>
