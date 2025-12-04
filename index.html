@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Yoru & Mochi — Official</title>
-  <meta name="description" content="Daily joyful shorts - pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, Instagram & TikTok." />
+  <title>Yoru & Mochi - Official</title>
+  <meta name="description" content="Cute daily shorts - pet adventures, adorable moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, TikTok & Instagram." />
   <link rel="canonical" href="https://yorumochi.com/" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="180x180" href="/images/yoru_mochi_favicon.png">
 
-  <!-- Open Graph (preserve from original) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yorumochi.com/">
   <meta property="og:title" content="Yoru & Mochi — Cute Daily Pet Adventures">
-  <meta property="og:description" content="Daily joyful shorts - pet adventures, cute moments, and tiny discoveries. Follow Yoru & Mochi.">
+  <meta property="og:description" content="Cute daily shorts - pet adventures, adorable moments, and tiny discoveries.">
   <meta property="og:image" content="https://yorumochi.com/images/yoru_mochi_og.jpg?v=1">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,10 +23,10 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yoru & Mochi — Cute Daily Pet Adventures">
-  <meta name="twitter:description" content="Daily joyful shorts - pet adventures, cute moments, and tiny discoveries.">
+  <meta name="twitter:description" content="Cute daily shorts - pet adventures, adorable moments, and tiny discoveries.">
   <meta name="twitter:image" content="https://yorumochi.com/images/yoru_mochi_og.jpg?v=1">
 
-  <!-- Schema JSON-LD (preserve) -->
+  <!-- Schema JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -48,197 +48,448 @@
           "https://www.tiktok.com/@yoru.mochi",
           "https://linktr.ee/YoruMochi"
         ],
-        "description":"Yoru & Mochi — Daily joyful shorts: pet adventures, cute moments, and tiny discoveries.",
+        "description":"Yoru & Mochi — Cute daily shorts: pet adventures, adorable moments, and tiny discoveries.",
         "foundingDate":"2025"
       }
     ]
   }
   </script>
 
-  <!-- Combined CSS: dark 3D theme + carousel from newer design -->
+  <!-- CSS -->
   <style>
     :root{
       --bg:#f7f8fa;
       --panel:#ffffff;
-      --soft:#f6f2ef;
-      --accent:#FFD9B6; /* peach */
-      --muted:#9aa7b0; /* soft grey-blue */
-      --text:#3b4752; /* darker for pastel theme */
+      --accent:#FFD9B6;
+      --muted:#9aa7b0;
+      --text:#3b4752;
       --text-dark:#071026;
-      --glass: rgba(255,255,255,0.7);
-      --gold: #FFE18A; /* pastel yellow */
+      --gold:#FFE18A;
       --dot:#ffdca8;
-      --shadow: 0 12px 30px rgba(30,40,50,0.08);
+      --shadow:0 14px 34px rgba(25,35,45,0.10);
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(135deg, #d8f3ff 0%, #ffe6e0 50%, #eaffea 100%);
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:linear-gradient(135deg,#d8f3ff 0%,#ffe6e0 50%,#eaffea 100%);
       color:var(--text);
       display:flex;
       align-items:center;
       justify-content:center;
       padding:28px;
+      overflow:hidden;
+      position:relative;
     }
 
-    /* decorative soft circles */
+    /* soft blobs */
     body::before,
     body::after{
-      content:'';position:fixed;pointer-events:none;border-radius:50%;filter: blur(36px);opacity:0.6;
+      content:'';
+      position:fixed;
+      border-radius:50%;
+      filter:blur(36px);
+      opacity:0.65;
+      pointer-events:none;
+      z-index:0;
     }
-    body::before{width:260px;height:260px;left:8%;top:6%;background:radial-gradient(circle,#d8f3ff,#d8f3ff00)}
-    body::after{width:220px;height:220px;right:6%;bottom:8%;background:radial-gradient(circle,#ffdfe3,#ffdfe300)}
+    body::before{
+      width:260px;height:260px;
+      left:8%;top:6%;
+      background:radial-gradient(circle,#d8f3ff,#d8f3ff00);
+    }
+    body::after{
+      width:220px;height:220px;
+      right:6%;bottom:8%;
+      background:radial-gradient(circle,#ffdfe3,#ffdfe300);
+    }
 
-    .wrap{width:100%;max-width:380px;padding:18px}
+    /* floating clouds background */
+    .cloud{
+      position:absolute;
+      width:110px;
+      height:60px;
+      background:rgba(255,255,255,0.92);
+      border-radius:50px;
+      box-shadow:
+        18px 10px 0 rgba(255,255,255,0.95),
+        -18px 12px 0 rgba(255,255,255,0.96);
+      filter:blur(0.2px);
+      opacity:0.9;
+      z-index:1;
+      animation:cloudFloat 24s linear infinite;
+    }
+    .cloud::before,
+    .cloud::after{
+      content:'';
+      position:absolute;
+      background:rgba(255,255,255,0.98);
+      border-radius:50%;
+    }
+    .cloud::before{
+      width:52px;height:52px;
+      left:-12px;top:-18px;
+    }
+    .cloud::after{
+      width:68px;height:68px;
+      right:-18px;top:-24px;
+    }
+    .cloud.cloud-1{top:12%;left:-18%;animation-duration:26s;}
+    .cloud.cloud-2{top:38%;right:-22%;animation-duration:30s;animation-delay:-8s;}
+    .cloud.cloud-3{bottom:14%;left:-25%;animation-duration:34s;animation-delay:-4s;}
+
+    @keyframes cloudFloat{
+      0%  {transform:translateX(0) translateY(0);}
+      50% {transform:translateX(140%) translateY(-6px);}
+      100%{transform:translateX(280%) translateY(0);}
+    }
+
+    .wrap{
+      width:100%;
+      max-width:380px;
+      padding:18px;
+      position:relative;
+      z-index:2;
+    }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,250,247,0.9));
-      border-radius:18px;
-      padding:22px;
-      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.6);
-      border: 1px solid rgba(255,255,255,0.6);
-      transition:transform .28s cubic-bezier(.2,.9,.2,1);
-      position: relative;
-      overflow: visible;
+      position:relative;
+      background:linear-gradient(180deg,rgba(255,255,255,0.96),rgba(255,250,247,0.96));
+      border-radius:20px;
+      padding:24px 22px 22px;
+      box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,0.8);
+      border:1px solid rgba(255,255,255,0.75);
+      transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
+      overflow:visible;
+      z-index:3;
     }
 
-    .hero{display:block;gap:12px;align-items:center;text-align:center;padding-top:8px}
-    .avatar-wrap{display:none}
-
-    h1{margin:8px 0 0;font-size:20px;color:var(--text);font-weight:700; text-shadow: none;}
-    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px;opacity:0.95}
-    .meta{color: #56626b; font-weight:600; margin-top:6px}
-    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
-
-    .carousel-container { position: relative; width:100%; margin-top:16px; border-radius:14px; overflow:hidden; /* changed to hidden so side slides are clipped */ }
-    .carousel-track { display:flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform; width:100%; }
-    .carousel-slide { min-width:100%; padding:0; display:flex; align-items:center; justify-content:center; text-align:center; box-sizing:border-box; }
-    .carousel-slide .slide-content {
-      max-width:380px;
-      width:92%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,247,0.95));
-      border-radius:18px;
-      padding:32px 26px;
-      box-shadow: 0 14px 34px rgba(25,35,45,0.09);
-      border:1px solid rgba(0,0,0,0.04);
-      margin: 0 auto;
-    }
-
-    .carousel-track { display:flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform }
-    .carousel-slide { min-width:100%; padding:18px; display:flex; align-items:center; justify-content:center; text-align:center; }
-    .carousel-slide .slide-content { max-width:320px; background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,250,247,0.85)); border-radius:14px; padding:22px; box-shadow: 0 10px 30px rgba(25,35,45,0.06); border:1px solid rgba(0,0,0,0.03) }
-    .slide-icon { font-size:2.4rem; margin-bottom:0.6rem; display:block }
-    .slide-title { font-size:16px; font-weight:700; margin-bottom:6px }
-    .slide-description { color:var(--muted); margin-bottom:12px; font-size:13px }
-
-    .cta-button { display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 1.1rem; background: linear-gradient(180deg,var(--gold), #FFE9AD); color:var(--text-dark); border-radius:999px; font-weight:700; text-decoration:none; box-shadow: 0 8px 20px rgba(255,200,120,0.22); border: none }
-
-    .nav-button { position:absolute; top:50%; transform:translateY(-50%); background: rgba(255,255,255,0.95); border:none; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:4; color:var(--text); box-shadow: 0 6px 18px rgba(20,30,40,0.06) }
-    .nav-button.prev { left:-8px }
-    .nav-button.next { right:-8px }
-
-    .pagination { display:flex; justify-content:center; gap:0.5rem; margin-top:12px }
-    .pagination-dot { width:10px; height:10px; border-radius:50%; background: rgba(255,255,255,0.8); border:none; box-shadow: 0 3px 8px rgba(20,30,40,0.06) }
-    .pagination-dot.active { background: var(--dot) }
-
-    .footer{ display: none !important; /* hidden non-destructive: can re-enable by removing this rule */ }
-
-    @media(min-width:900px){ .wrap{max-width:900px} .avatar-wrap{display:block} }
-  
-/* Use header image as a blurred background inside the card so the menu is the focus */
-    .avatar-wrap { display: none !important; } /* keep small avatar hidden */
-
-    .card{ position:relative; z-index:3; overflow:visible; /* keep card above the background layer */ }
-
+    /* blurred header background */
     .card::before{
-      content: '';
-      position: absolute;
-      left: 50%; top: 0;
-      transform: translateX(-50%) scale(1.04);
-      width: 140%;
-      height: 60%;
-      background-image: url('/images/yoru_mochi_og.jpg?v=1');
-      background-size: cover;
-      background-position: center center;
-      /* soften the background and slightly darken so text pops */
-      filter: blur(14px) saturate(105%) brightness(0.78);
-      border-radius: 18px;
+      content:'';
+      position:absolute;
+      left:50%;top:-16px;
+      transform:translateX(-50%) scale(1.02);
+      width:135%;
+      height:58%;
+      background-image:url('/images/yoru_mochi_og.jpg?v=1');
+      background-size:cover;
+      background-position:center center;
+      filter:blur(18px) saturate(1.05) brightness(0.95);
+      border-radius:26px;
+      opacity:0.9;
+      pointer-events:none;
       z-index:1;
-      opacity: 0.95;
-      pointer-events: none;
     }
-
-    /* stronger overlay to ensure text contrast */
     .card::after{
-      content: '';
-      position: absolute;
-      inset: 0 0 0 0;
-      /* slightly more opaque white with subtle top shadow for readability */
-      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,250,247,0.88));
-      box-shadow: inset 0 40px 80px rgba(0,0,0,0.04);
-      border-radius: 18px;
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,0.93),rgba(255,250,247,0.90));
+      box-shadow:inset 0 40px 80px rgba(0,0,0,0.03);
+      border-radius:20px;
       z-index:2;
-      pointer-events: none;
+      pointer-events:none;
+    }
+    .card > *{
+      position:relative;
+      z-index:3;
     }
 
-    /* ensure internal content sits above the background */
-    .card > * { position: relative; z-index:3 }
+    .hero{
+      text-align:center;
+      padding-top:8px;
+    }
 
-    /* safety: hide any leftover banner/fullwidth images if present */
-    img.fullwidth, img.banner-img { display: none !important; max-width:100% !important; height:auto !important; }
+    h1{
+      margin:8px 0 0;
+      font-size:20px;
+      color:var(--text);
+      font-weight:700;
+    }
+    p.lead{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .meta{
+      color:#56626b;
+      font-weight:600;
+      margin-top:8px;
+      font-size:13px;
+    }
+
+    /* carousel core */
+    .carousel-container{
+      position:relative;
+      width:100%;
+      margin-top:18px;
+      border-radius:16px;
+      overflow:hidden;
+      padding:8px 0 6px;
+    }
+    .carousel-track{
+      display:flex;
+      width:100%;
+      transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);
+      will-change:transform;
+    }
+    .carousel-slide{
+      min-width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 10px 4px;
+      box-sizing:border-box;
+      text-align:center;
+    }
+
+    .slide-content{
+      max-width:320px;
+      width:100%;
+      margin:0 auto;
+      background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,250,247,0.97));
+      border-radius:18px;
+      padding:26px 22px 22px;
+      box-shadow:0 12px 30px rgba(25,35,45,0.09);
+      border:1px solid rgba(0,0,0,0.02);
+    }
+
+    /* jelly icon */
+    .slide-icon-wrap{
+      width:64px;
+      height:64px;
+      border-radius:22px;
+      margin:0 auto 10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:radial-gradient(circle at 30% 20%,#ffffff, #ffe6c3);
+      box-shadow:
+        0 10px 22px rgba(255,190,130,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+      transform:translateY(0);
+      animation:jellyBounce 2.4s ease-in-out infinite;
+    }
+    .carousel-slide:nth-child(2) .slide-icon-wrap{
+      background:radial-gradient(circle at 30% 20%,#ffffff,#ffd0f2);
+      box-shadow:0 10px 22px rgba(240,150,220,0.35), inset 0 1px 0 rgba(255,255,255,0.9);
+      animation-delay:-0.4s;
+    }
+    .carousel-slide:nth-child(3) .slide-icon-wrap{
+      background:radial-gradient(circle at 30% 20%,#ffffff,#d8f3ff);
+      box-shadow:0 10px 22px rgba(140,190,255,0.35), inset 0 1px 0 rgba(255,255,255,0.9);
+      animation-delay:-0.8s;
+    }
+
+    @keyframes jellyBounce{
+      0%,100%{transform:translateY(0) scale(1);}
+      35%{transform:translateY(-6px) scale(1.03,0.97);}
+      55%{transform:translateY(0) scale(0.98,1.02);}
+      75%{transform:translateY(-3px) scale(1.01);}
+    }
+
+    .slide-icon{
+      font-size:26px;
+      display:inline-block;
+    }
+    .slide-title{
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:6px;
+      color:var(--text-dark);
+    }
+    .slide-description{
+      color:var(--muted);
+      margin-bottom:14px;
+      font-size:13px;
+    }
+
+    .cta-button{
+      display:inline-flex;
+      align-items:center;
+      gap:0.45rem;
+      padding:0.58rem 1.18rem;
+      background:linear-gradient(180deg,var(--gold),#FFE9AD);
+      color:var(--text-dark);
+      border-radius:999px;
+      font-weight:700;
+      font-size:14px;
+      text-decoration:none;
+      box-shadow:0 8px 20px rgba(255,200,120,0.26);
+      border:none;
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .cta-button span.arrow{
+      font-size:13px;
+      margin-top:1px;
+    }
+    .cta-button:hover{
+      transform:translateY(-1px);
+      box-shadow:0 10px 24px rgba(255,200,120,0.32);
+      filter:brightness(1.03);
+    }
+    .cta-button:active{
+      transform:translateY(1px) scale(0.97);
+      box-shadow:0 5px 14px rgba(255,200,120,0.28);
+    }
+
+    /* nav buttons – outside container, aligned with carousel */
+    .nav-button{
+      position:absolute;
+      top:56%;                  /* kira-kira sejajar tengah slide */
+      background:rgba(255,255,255,0.85);
+      border:1px solid rgba(255,255,255,0.9);
+      width:36px;
+      height:36px;
+      padding:0;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      z-index:4;
+      color:var(--text);
+      box-shadow:0 4px 14px rgba(20,30,40,0.10);
+      font-size:16px;
+      transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+      backdrop-filter:blur(6px);
+    }
+    .nav-button.prev{ left:-28px; }
+    .nav-button.next{ right:-28px; }
+
+    .nav-button:hover{
+      background:rgba(255,255,255,1);
+      transform:translateY(-1px) scale(1.06);
+      box-shadow:0 7px 18px rgba(20,30,40,0.14);
+    }
+    .nav-button:active{
+      transform:translateY(1px) scale(0.96);
+      box-shadow:0 3px 10px rgba(20,30,40,0.12);
+    }
+
+    .pagination{
+      display:flex;
+      justify-content:center;
+      gap:0.5rem;
+      margin-top:10px;
+    }
+    .pagination-dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.8);
+      border:none;
+      box-shadow:0 3px 8px rgba(20,30,40,0.08);
+      cursor:pointer;
+      transition:transform .18s ease, background .18s ease;
+    }
+    .pagination-dot.active{
+      background:var(--dot);
+      transform:scale(1.18);
+    }
+
+    .footer{
+      display:none !important;
+    }
+
+    @media (min-width:768px){
+      .wrap{max-width:410px;}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *{
+        animation-duration:0.001ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition:none !important;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- floating clouds -->
+  <div class="cloud cloud-1" aria-hidden="true"></div>
+  <div class="cloud cloud-2" aria-hidden="true"></div>
+  <div class="cloud cloud-3" aria-hidden="true"></div>
+
   <div class="wrap">
     <div class="card" id="mainCard" role="main" aria-label="Yoru & Mochi landing">
       <div class="hero">
-        <div class="avatar-wrap" id="avatarWrap" aria-hidden="true">
-          <img src="/images/yoru_mochi_og.jpg?v=1" alt="Yoru & Mochi" id="avatarImg">
-        </div>
-
-        <div style="flex:1">
-          <h1>Yoru & Mochi</h1>
-          <p class="lead">Daily joyful shorts - pet adventures, cute moments, and tiny discoveries. Subscribe & follow to never miss new shorts.</p>
-          <div class="meta">Official • Short videos</div>
-        </div>
+        <h1>Yoru & Mochi</h1>
+        <p class="lead">
+          Cute daily shorts - pet adventures, adorable moments, and tiny discoveries.
+          Subscribe & follow so you never miss a new clip.
+        </p>
+        <div class="meta">Official • Pet short videos</div>
       </div>
 
-      <!-- Carousel (merged from index baru) -->
+      <!-- Carousel -->
       <div class="carousel-container" role="region" aria-label="Social media platform navigation">
         <div class="carousel-track" id="carouselTrack">
+          <!-- Slide 1: YouTube -->
           <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 3: Watch on YouTube">
             <div class="slide-content">
-              <span class="slide-icon" aria-hidden="true">▶</span>
+              <div class="slide-icon-wrap">
+                <span class="slide-icon" aria-hidden="true">▶</span>
+              </div>
               <h2 class="slide-title">Watch on YouTube</h2>
-              <p class="slide-description">Daily joyful shorts  Yoru & Mochi</p>
-              <a href="https://www.youtube.com/@YoruMochi-2306" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Watch Yoru & Mochi on YouTube">Buka →</a>
+              <p class="slide-description">Daily joyful shorts of Yoru & Mochi in one cozy channel.</p>
+              <a href="https://www.youtube.com/@YoruMochi-2306"
+                 class="cta-button"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Open Yoru & Mochi on YouTube">
+                <span>Open</span><span class="arrow">→</span>
+              </a>
             </div>
           </div>
 
+          <!-- Slide 2: TikTok -->
           <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 3: Watch on TikTok">
             <div class="slide-content">
-              <span class="slide-icon" aria-hidden="true">🎵</span>
+              <div class="slide-icon-wrap">
+                <span class="slide-icon" aria-hidden="true">♪</span>
+              </div>
               <h2 class="slide-title">Watch on TikTok</h2>
-              <p class="slide-description">Tiny adventures & short clips</p>
-              <a href="https://www.tiktok.com/@yoru.mochi" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Watch Yoru & Mochi on TikTok">Buka →</a>
+              <p class="slide-description">Fast, tiny adventures and trending sound moments.</p>
+              <a href="https://www.tiktok.com/@yoru.mochi"
+                 class="cta-button"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Open Yoru & Mochi on TikTok">
+                <span>Open</span><span class="arrow">→</span>
+              </a>
             </div>
           </div>
 
+          <!-- Slide 3: Instagram -->
           <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 3: Follow on Instagram">
             <div class="slide-content">
-              <span class="slide-icon" aria-hidden="true">📸</span>
+              <div class="slide-icon-wrap">
+                <span class="slide-icon" aria-hidden="true">📸</span>
+              </div>
               <h2 class="slide-title">Follow on Instagram</h2>
-              <p class="slide-description">Behind-the-scenes & photos</p>
-              <a href="https://www.instagram.com/yoru.mochi" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Follow Yoru & Mochi on Instagram">Buka →</a>
+              <p class="slide-description">Behind-the-scenes photos, stories, and cozy daily vibes.</p>
+              <a href="https://www.instagram.com/yoru.mochi"
+                 class="cta-button"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Open Yoru & Mochi on Instagram">
+                <span>Open</span><span class="arrow">→</span>
+              </a>
             </div>
           </div>
         </div>
-
-        <button class="nav-button prev" type="button" aria-label="Previous slide">‹</button>
-        <button class="nav-button next" type="button" aria-label="Next slide">›</button>
       </div>
+
+      <!-- Nav buttons (outside container, still inside card) -->
+      <button class="nav-button prev" type="button" aria-label="Previous slide">‹</button>
+      <button class="nav-button next" type="button" aria-label="Next slide">›</button>
 
       <div class="pagination" role="tablist" aria-label="Slide navigation">
         <button class="pagination-dot active" type="button" aria-label="Go to slide 1"></button>
@@ -247,71 +498,151 @@
       </div>
 
       <div class="footer">
-        Made with ♥ • Yoru & Mochi — Lightweight landing • <a href="/sitemap.xml" style="color:var(--muted);text-decoration:none">Sitemap</a>
+        Made with ♥ • Yoru & Mochi — Lightweight landing •
+        <a href="/sitemap.xml" style="color:var(--muted);text-decoration:none">Sitemap</a>
       </div>
     </div>
   </div>
 
-  <!-- Combined JS: tilt effect (from old) + slider (from new) -->
+  <!-- JS: soft tilt + slider with autoplay & swipe -->
   <script>
     (function(){
-      const avatarWrap = document.getElementById('avatarWrap');
       const mainCard = document.getElementById('mainCard');
-      const avatarImg = document.getElementById('avatarImg');
 
       function onMove(e){
         const rect = mainCard.getBoundingClientRect();
         const x = (e.clientX - rect.left) - rect.width/2;
         const y = (e.clientY - rect.top) - rect.height/2;
-        const rx = - (y / rect.height) * 6;
-        const ry = (x / rect.width) * 6;
-        mainCard.style.transform = `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-        avatarWrap.style.transform = `translateZ(12px) rotateX(${rx*0.6}deg) rotateY(${ry*0.6}deg)`;
+        const rx = -(y / rect.height) * 3;
+        const ry = (x / rect.width) * 3;
+        mainCard.style.transform =
+          'translateY(-4px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
       }
-      function onLeave(){ mainCard.style.transform=''; avatarWrap.style.transform=''; }
-      if(window.matchMedia('(hover: hover)').matches){ mainCard.addEventListener('mousemove', onMove); mainCard.addEventListener('mouseleave', onLeave); }
-      avatarImg.addEventListener('error', ()=>{ avatarImg.style.opacity=0.85 });
+      function onLeave(){
+        mainCard.style.transform = '';
+      }
+
+      if (window.matchMedia('(hover: hover)').matches) {
+        mainCard.addEventListener('mousemove', onMove);
+        mainCard.addEventListener('mouseleave', onLeave);
+      }
     })();
 
-    // Slider implementation (lightweight, adapted)
     class YoruMochiSlider {
-      constructor(options={}){
+      constructor(options = {}) {
         this.track = document.getElementById('carouselTrack');
         this.slides = this.track.querySelectorAll('.carousel-slide');
-        this.prev = document.querySelector('.nav-button.prev');
-        this.next = document.querySelector('.nav-button.next');
+        this.prevBtn = document.querySelector('.nav-button.prev');
+        this.nextBtn = document.querySelector('.nav-button.next');
         this.dots = document.querySelectorAll('.pagination-dot');
+        this.container = document.querySelector('.carousel-container');
+
         this.total = this.slides.length;
         this.current = 0;
+
         this.autoplay = options.autoplay !== false;
         this.interval = options.interval || 4000;
         this.timer = null;
+
+        this.startX = 0;
+        this.deltaX = 0;
+        this.swipeThreshold = 40;
+
         this.init();
       }
-      init(){
+
+      init() {
         this.update();
-        this.prev.addEventListener('click', ()=>this.prevSlide());
-        this.next.addEventListener('click', ()=>this.nextSlide());
-        this.dots.forEach((d,i)=>d.addEventListener('click', ()=>this.goTo(i)));
-        const container = document.querySelector('.carousel-container');
-        container.addEventListener('mouseenter', ()=>this.pause());
-        container.addEventListener('mouseleave', ()=>this.play());
+        this.prevBtn.addEventListener('click', () => this.prev());
+        this.nextBtn.addEventListener('click', () => this.next());
+        this.dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => this.goTo(i));
+        });
+
+        this.container.addEventListener('mouseenter', () => this.pause());
+        this.container.addEventListener('mouseleave', () => this.play());
+
+        this.container.addEventListener('touchstart', (e) => this.onTouchStart(e), {passive:true});
+        this.container.addEventListener('touchmove', (e) => this.onTouchMove(e), {passive:true});
+        this.container.addEventListener('touchend', () => this.onTouchEnd());
+
         this.start();
       }
-      update(){
-        this.track.style.transform = `translateX(${ -this.current * 100 }%)`;
-        this.slides.forEach((s,i)=> s.classList.toggle('active', i===this.current));
-        this.dots.forEach((d,i)=> d.classList.toggle('active', i===this.current));
+
+      update() {
+        this.track.style.transform = 'translateX(' + (-this.current * 100) + '%)';
+        this.slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === this.current);
+        });
+        this.dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === this.current);
+        });
       }
-      nextSlide(){ this.current = (this.current+1)%this.total; this.update(); }
-      prevSlide(){ this.current = (this.current-1+this.total)%this.total; this.update(); }
-      goTo(i){ this.current = i%this.total; this.update(); }
-      start(){ if(this.autoplay) this.timer = setInterval(()=>this.nextSlide(), this.interval); }
-      pause(){ if(this.timer){ clearInterval(this.timer); this.timer=null } }
-      play(){ if(!this.timer) this.start(); }
+
+      next() {
+        this.current = (this.current + 1) % this.total;
+        this.update();
+      }
+
+      prev() {
+        this.current = (this.current - 1 + this.total) % this.total;
+        this.update();
+      }
+
+      goTo(index) {
+        this.current = index % this.total;
+        this.update();
+      }
+
+      start() {
+        if (this.autoplay && !this.timer) {
+          this.timer = setInterval(() => this.next(), this.interval);
+        }
+      }
+
+      pause() {
+        if (this.timer) {
+          clearInterval(this.timer);
+          this.timer = null;
+        }
+      }
+
+      play() {
+        if (!this.timer) {
+          this.start();
+        }
+      }
+
+      onTouchStart(e) {
+        if (!e.touches || e.touches.length === 0) return;
+        this.pause();
+        this.startX = e.touches[0].clientX;
+        this.deltaX = 0;
+      }
+
+      onTouchMove(e) {
+        if (!e.touches || e.touches.length === 0) return;
+        this.deltaX = e.touches[0].clientX - this.startX;
+      }
+
+      onTouchEnd() {
+        if (Math.abs(this.deltaX) > this.swipeThreshold) {
+          if (this.deltaX < 0) {
+            this.next();
+          } else {
+            this.prev();
+          }
+        }
+        this.play();
+      }
     }
 
-    document.addEventListener('DOMContentLoaded', ()=>{ window.slider = new YoruMochiSlider({autoplay:true, interval:4000}); });
+    document.addEventListener('DOMContentLoaded', function () {
+      window.yoruMochiSlider = new YoruMochiSlider({
+        autoplay: true,
+        interval: 4200
+      });
+    });
   </script>
 </body>
 </html>
