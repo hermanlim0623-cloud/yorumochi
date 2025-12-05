@@ -36,4 +36,25 @@
     <priority>0.60</priority>
   </url>
 
+    <url>
+    <loc>https://yorumochi.com/funny-guinea-pig-videos/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://yorumochi.com/cute-guinea-pig-moments/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://yorumochi.com/guinea-pig-compilation/</loc>
+    <lastmod>2025-12-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
 </urlset>
