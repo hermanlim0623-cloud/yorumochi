@@ -148,24 +148,10 @@
       min-height:360px;
       color:var(--text-dark);
     }
-    .card::before{
-      content:'';
-      position:absolute;
-      left:50%;
-      top:-8px;
-      transform:translateX(-50%);
-      width:110%;
-      max-width:420px;
-      height:50%;
-      background-image:url('images/yoru_mochi_og.png');
-      background-size:cover;
-      background-position:center center;
-      filter:blur(8px) saturate(1.03) brightness(0.96);
-      border-radius:22px;
-      opacity:0.85;
-      pointer-events:none;
-      z-index:1;
-    }
+.card::before{
+  display: none !important;
+  content: none !important;
+}
     .card::after{
       content:'';
       position:absolute;
