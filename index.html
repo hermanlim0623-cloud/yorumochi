@@ -18,7 +18,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Cute Guinea Pig Videos & Funny Pet Shorts – YoruMochi" />
   <meta property="og:description" content="Watch cute guinea pig videos, adorable pet moments, and funny guinea pig shorts on YoruMochi. Updated daily with the cutest content online." />
-  <meta property="og:image" content="https://yorumochi.com/images/yoru_mochi_og.png" />
+  <meta property="og:image" content="https://yorumochi.com/images/yoru_mochi_favicon.png" />
   <meta property="og:url" content="https://yorumochi.com/" />
   <meta property="og:site_name" content="YoruMochi" />
 
@@ -26,14 +26,14 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cute Guinea Pig Videos & Funny Pet Shorts – YoruMochi" />
   <meta name="twitter:description" content="Watch cute guinea pig videos, adorable pet moments, and funny guinea pig shorts on YoruMochi. Updated daily with the cutest content online." />
-  <meta name="twitter:image" content="https://yorumochi.com/images/yoru_mochi_og.png" />
+  <meta name="twitter:image" content="https://yorumochi.com/images/yoru_mochi_favicon.png" />
 
   <!-- Sitemap (agar mudah ditemukan oleh crawler) -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
   <!-- Preload images untuk prioritas muat (biarkan hanya yang dipakai segera) -->
-  <link rel="preload" as="image" href="/images/pet1.png">
-  <link rel="preload" as="image" href="/images/pet2.png">
+  <link rel="preload" as="image" href="/images/pet1.webp">
+  <link rel="preload" as="image" href="/images/pet2.webp">
   <!-- NOTE: yoru_mochi_og.png preload dihapus untuk menghindari warning jika tidak dipakai langsung -->
 
   <!-- Optional: favicons -->
@@ -327,8 +327,8 @@
     /* ===== Pattern builder: staggered (brick) layout, responsive + fallback ===== */
     (function(){
       const container = document.getElementById('patternGrid');
-      const IMG1 = 'images/pet1.png';
-      const IMG2 = 'images/pet2.png';
+      const IMG1 = 'images/pet1.webp';
+      const IMG2 = 'images/pet2.webp';
       const RAW_BASE = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
 
       // Opsi: true = staggered (brick), false = simple checkerboard
@@ -411,7 +411,7 @@
         const nodes = container.querySelectorAll('.pattern-tile');
         nodes.forEach((n,i)=>{
           const useFirst = (i % 2 === 0);
-          n.style.backgroundImage = useFirst ? `url("${RAW_BASE}pet1.png")` : `url("${RAW_BASE}pet2.png")`;
+          n.style.backgroundImage = useFirst ? `url("${RAW_BASE}pet1.webp")` : `url("${RAW_BASE}pet2.webp")`;
         });
       }
 
@@ -432,7 +432,7 @@
     // pet decorative images: show quickly and fallback to GH if local missing
     (function(){
       const baseRaw = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
-      [['pet1','pet1.png'], ['pet2','pet2.png']].forEach(([id,file])=>{
+      [['pet1','pet1.webp'], ['pet2','pet2.webp']].forEach(([id,file])=>{
         const img = document.getElementById(id);
         if(!img) return;
         if(img.complete && img.naturalWidth !== 0){
