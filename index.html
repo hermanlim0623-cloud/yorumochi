@@ -21,11 +21,13 @@
       --gold:#FFE18A;
       --dot:#ffdca8;
       --shadow:0 14px 34px rgba(25,35,45,0.10);
+      --card-width: 380px;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html, body { height:100%; width:100%; margin:0; padding:0; overflow-x:hidden; }
     :root { --vh: 1vh; }
 
+    /* BODY fallback gradient (di bawah pattern) */
     body{
       font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: linear-gradient(135deg,#d8f3ff 0%,#ffe6e0 50%,#eaffea 100%);
@@ -43,6 +45,36 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
+    /* ===== PATTERN GRID LAYER (alternating pet1/pet2) ===== */
+    .pattern-grid{
+      position:fixed;
+      inset:0;
+      z-index:0; /* paling bawah */
+      pointer-events:none;
+      overflow:hidden;
+      background:transparent;
+    }
+    .pattern-tile{
+      position:absolute;
+      width:110px;
+      height:110px;
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+      opacity:0.95;
+      filter: drop-shadow(0 6px 14px rgba(20,30,40,0.06));
+      will-change: transform, opacity;
+    }
+
+    /* overlay di atas pattern agar card terbaca (kurangi opacity supaya pattern jelas) */
+    .pattern-overlay{
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,250,247,0.28));
+    }
+
     .page-inner{
       width:100%;
       display:flex;
@@ -52,14 +84,16 @@
       padding-right:env(safe-area-inset-right, 0px);
       padding-top:env(safe-area-inset-top, 0px);
       padding-bottom:env(safe-area-inset-bottom, 0px);
+      position:relative;
+      z-index:3; /* di atas pattern & overlay */
     }
 
-    /* dekoratif pet (pastikan file ada di /images/) */
+    /* dekoratif pet - masih ada (posisi fixed) */
     .decor-pet{
       position:fixed;
       pointer-events:none;
       user-select:none;
-      z-index:6;                /* di atas card agar jelas terlihat; ubah jika mau di belakang */
+      z-index:6;
       opacity:0;
       will-change:transform,opacity;
       filter: drop-shadow(0 18px 36px rgba(15,25,35,0.08));
@@ -85,25 +119,13 @@
       animation:petFloatLeft 28s linear infinite;
       animation-delay:-4s;
     }
-
-    @keyframes petFloatRight{
-      0%   { transform: translate3d(0,0,0) scale(1); }
-      25%  { transform: translate3d(6vw,-6px,0) scale(1.02); }
-      50%  { transform: translate3d(0,-3px,0) scale(0.99); }
-      75%  { transform: translate3d(4vw,-8px,0) scale(1.01); }
-      100% { transform: translate3d(0,0,0) scale(1); }
-    }
-    @keyframes petFloatLeft{
-      0%   { transform: translate3d(0,0,0) scale(1); }
-      25%  { transform: translate3d(-6vw,6px,0) scale(1.02); }
-      50%  { transform: translate3d(0,3px,0) scale(0.99); }
-      75%  { transform: translate3d(-4vw,8px,0) scale(1.01); }
-      100% { transform: translate3d(0,0,0) scale(1); }
-    }
+    @keyframes petFloatRight{ 0%{transform:translate3d(0,0,0)}25%{transform:translate3d(6vw,-6px,0) scale(1.02)}50%{transform:translate3d(0,-3px,0) scale(.99)}75%{transform:translate3d(4vw,-8px,0) scale(1.01)}100%{transform:translate3d(0,0,0)} }
+    @keyframes petFloatLeft{ 0%{transform:translate3d(0,0,0)}25%{transform:translate3d(-6vw,6px,0) scale(1.02)}50%{transform:translate3d(0,3px,0) scale(.99)}75%{transform:translate3d(-4vw,8px,0) scale(1.01)}100%{transform:translate3d(0,0,0)} }
 
     @media (max-width:420px){
       .pet-top{ width:26vw; max-width:120px; top:4%; left:6%; }
       .pet-bottom{ width:30vw; max-width:130px; right:6%; bottom:4%; }
+      .pattern-tile{ width:70px; height:70px; }
     }
 
     /* Decorative blobs behind */
@@ -115,14 +137,14 @@
     .wrap{ width:100%; max-width:380px; width: min(92vw, 380px); padding:16px; position:relative; z-index:2; margin:0 auto; box-sizing:border-box; }
     .card{
       position:relative;
-      background:rgba(255,255,255,0.94);
+      background:#ffffff; /* full white supaya kontras */
       border-radius:20px;
       padding:22px 18px 18px;
       box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,0.85);
       border:1px solid rgba(255,255,255,0.75);
       transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
       overflow:visible;
-      z-index:3;
+      z-index:4;
       min-height:360px;
       color:var(--text-dark);
     }
@@ -148,7 +170,7 @@
       content:'';
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,250,247,0.82));
+      background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,250,247,0.98));
       box-shadow:inset 0 40px 80px rgba(0,0,0,0.03);
       border-radius:20px;
       z-index:2;
@@ -161,10 +183,10 @@
     .meta{ color:#56626b; font-weight:600; margin-top:8px; font-size:13px; }
 
     /* carousel */
-    .carousel-container{ position:relative; width:100%; margin-top:18px; border-radius:16px; overflow:hidden; padding:8px 0 6px; }
-    .carousel-track{ display:flex; width:100%; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
-    .carousel-slide{ min-width:100%; flex:0 0 100%; display:flex; align-items:center; justify-content:center; padding:0 6px 4px; box-sizing:border-box; text-align:center; }
-    .slide-content{ max-width:320px; width:100%; margin:0 auto; background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,250,247,0.97)); border-radius:18px; padding:26px 22px 22px; box-shadow:0 12px 30px rgba(25,35,45,0.09); border:1px solid rgba(0,0,0,0.02); }
+    .carousel-container{ position:relative; width:100%; margin-top:18px; border-radius:16px; overflow:hidden; padding:8px 0 6px; height:260px; }
+    .carousel-track{ display:flex; width:100%; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform; height:100%; }
+    .carousel-slide{ min-width:100%; flex:0 0 100%; display:flex; align-items:center; justify-content:center; padding:0 6px 4px; box-sizing:border-box; text-align:center; height:100%; }
+    .slide-content{ max-width:320px; width:100%; margin:0 auto; background:linear-gradient(180deg,rgba(255,255,255,0.99),rgba(255,250,247,0.99)); border-radius:18px; padding:26px 22px 22px; box-shadow:0 12px 30px rgba(25,35,45,0.09); border:1px solid rgba(0,0,0,0.02); }
 
     .slide-icon-wrap{ width:64px; height:64px; border-radius:22px; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 30% 20%,#ffffff, #ffe6c3); box-shadow:0 10px 22px rgba(255,190,130,0.35), inset 0 1px 0 rgba(255,255,255,0.9); transform:translateY(0); animation:jellyBounce 2.4s ease-in-out infinite; }
     @keyframes jellyBounce{ 0%,100%{transform:translateY(0) scale(1);} 35%{transform:translateY(-6px) scale(1.03,0.97);} 55%{transform:translateY(0) scale(0.98,1.02);} 75%{transform:translateY(-3px) scale(1.01);} }
@@ -172,7 +194,7 @@
     .slide-description{ color:var(--muted); margin-bottom:14px; font-size:13px; }
     .cta-button{ display:inline-flex; align-items:center; gap:0.45rem; padding:0.58rem 1.18rem; background:linear-gradient(180deg,var(--gold),#FFE9AD); color:var(--text-dark); border-radius:999px; font-weight:700; font-size:14px; text-decoration:none; box-shadow:0 8px 20px rgba(255,200,120,0.26); border:none; transition:transform .18s ease, box-shadow .18s ease, filter .18s ease; }
 
-    .nav-button{ position:absolute; top:56%; background:rgba(255,255,255,0.85); border:1px solid rgba(255,255,255,0.9); width:36px; height:36px; padding:0; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:4; color:var(--text); box-shadow:0 4px 14px rgba(20,30,40,0.10); font-size:16px; transition:background .2s ease, transform .2s ease, box-shadow .2s ease; backdrop-filter:blur(6px); }
+    .nav-button{ position:absolute; top:56%; background:rgba(255,255,255,0.95); border:1px solid rgba(255,255,255,0.95); width:36px; height:36px; padding:0; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:5; color:var(--text); box-shadow:0 4px 14px rgba(20,30,40,0.10); font-size:16px; transition:background .2s ease, transform .2s ease, box-shadow .2s ease; backdrop-filter:blur(6px); }
     @media (min-width:421px){ .nav-button.prev{ left: -18px; } .nav-button.next{ right: -18px; } }
     @media (max-width:420px){ .nav-button.prev{ left:8px; } .nav-button.next{ right:8px; top:50%; transform:translateY(-50%); width:34px; height:34px; font-size:15px; } }
 
@@ -195,11 +217,13 @@
   </style>
 </head>
 <body>
-  <div class="page-inner">
+  <!-- pattern grid layer -->
+  <div class="pattern-grid" id="patternGrid" aria-hidden="true"></div>
 
-    <!-- pet images: relative path (images/) -->
-    <img id="pet1" src="images/pet1.png" alt="pet1" class="decor-pet pet-top" aria-hidden="true" loading="eager">
-    <img id="pet2" src="images/pet2.png" alt="pet2" class="decor-pet pet-bottom" aria-hidden="true" loading="eager">
+  <!-- overlay di atas pattern -->
+  <div class="pattern-overlay" aria-hidden="true"></div>
+
+  <div class="page-inner">
 
     <!-- kept original clouds if desired -->
     <div class="cloud cloud-1" aria-hidden="true"></div>
@@ -265,18 +289,76 @@
     </div>
   </div>
 
-  <!-- JS: small helpers (preload fallback + show pets quickly + slider/tilt) -->
+  <!-- JS: pattern grid builder + pet fallback + slider/tilt -->
   <script>
     // dynamic vh fallback
     (function(){ function setVh(){ document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px'); } setVh(); window.addEventListener('resize', setVh); })();
 
-    // fallback to raw GitHub if local images can't load (works both local preview and GH Pages)
+    // Build alternating tile grid (pet1 / pet2)
+    (function(){
+      const container = document.getElementById('patternGrid');
+      const IMG1 = 'images/pet1.png';
+      const IMG2 = 'images/pet2.png';
+      const RAW_BASE = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
+      const TILE_SIZE_DESKTOP = 110;
+      const TILE_SIZE_TABLET = 90;
+      const TILE_SIZE_MOBILE = 70;
+      let tileSize = TILE_SIZE_DESKTOP;
+
+      function build(){
+        if(!container) return;
+        container.innerHTML = '';
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        tileSize = vw <= 420 ? TILE_SIZE_MOBILE : (vw <= 900 ? TILE_SIZE_TABLET : TILE_SIZE_DESKTOP);
+        const cols = Math.ceil(vw / tileSize) + 1;
+        const rows = Math.ceil(vh / tileSize) + 1;
+        for (let r=0; r<rows; r++){
+          for (let c=0; c<cols; c++){
+            const el = document.createElement('div');
+            el.className = 'pattern-tile';
+            el.style.width = tileSize + 'px';
+            el.style.height = tileSize + 'px';
+            el.style.left = (c * tileSize) + 'px';
+            el.style.top = (r * tileSize) + 'px';
+            const useFirst = ((r + c) % 2 === 0);
+            el.style.backgroundImage = useFirst ? `url("${IMG1}")` : `url("${IMG2}")`;
+            container.appendChild(el);
+          }
+        }
+        // quick test: if images don't load (file://), fallback to raw GH
+        testImagesAndFallback();
+      }
+
+      function testImagesAndFallback(){
+        // only replace backgrounds to raw if both local images fail to load
+        let loaded = 0, tests = 0;
+        const imgs = [IMG1, IMG2];
+        imgs.forEach(src=>{
+          const i = new Image();
+          i.onload = ()=>{ loaded++; tests++; if(tests===imgs.length && loaded===0) applyRawFallback(); };
+          i.onerror = ()=>{ tests++; if(tests===imgs.length && loaded===0) applyRawFallback(); };
+          i.src = src;
+        });
+      }
+      function applyRawFallback(){
+        const nodes = container.querySelectorAll('.pattern-tile');
+        nodes.forEach((n,i)=>{
+          const useFirst = (i % 2 === 0);
+          n.style.backgroundImage = useFirst ? `url("${RAW_BASE}pet1.png")` : `url("${RAW_BASE}pet2.png")`;
+        });
+      }
+
+      window.addEventListener('resize', function(){ build(); });
+      document.addEventListener('DOMContentLoaded', build);
+    })();
+
+    // pet decorative images: show quickly and fallback to GH if local missing
     (function(){
       const baseRaw = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
       [['pet1','pet1.png'], ['pet2','pet2.png']].forEach(([id,file])=>{
         const img = document.getElementById(id);
         if(!img) return;
-        // if already loaded successfully -> show
         if(img.complete && img.naturalWidth !== 0){
           img.classList.add('visible');
         } else {
@@ -287,7 +369,6 @@
             }
             img.removeEventListener('error', fallback);
           });
-          // safety show after 500ms in case load events are delayed
           setTimeout(function(){ img.classList.add('visible'); }, 500);
         }
       });
@@ -311,56 +392,38 @@
       }
     })();
 
-    // slider
-    class YoruMochiSlider {
-      constructor(options = {}) {
-        this.track = document.getElementById('carouselTrack');
-        this.slides = this.track.querySelectorAll('.carousel-slide');
-        this.prevBtn = document.querySelector('.nav-button.prev');
-        this.nextBtn = document.querySelector('.nav-button.next');
-        this.dots = document.querySelectorAll('.pagination-dot');
-        this.container = document.querySelector('.carousel-container');
-        this.total = this.slides.length;
-        this.current = 0;
-        this.autoplay = options.autoplay !== false;
-        this.interval = options.interval || 4000;
-        this.timer = null;
-        this.startX = 0;
-        this.deltaX = 0;
-        this.swipeThreshold = 40;
-        this.init();
+    // slider (same logic)
+    (function(){
+      class Slider {
+        constructor(options = {}) {
+          this.track = document.getElementById('carouselTrack');
+          this.slides = this.track.querySelectorAll('.carousel-slide');
+          this.prev = document.querySelector('.nav-button.prev');
+          this.next = document.querySelector('.nav-button.next');
+          this.dots = document.querySelectorAll('.pagination-dot');
+          this.idx = 0;
+          this.interval = options.interval || 4200;
+          this.timer = null;
+          this.init();
+        }
+        init(){
+          this.update();
+          this.prev.addEventListener('click', ()=>{ this.prevSlide(); });
+          this.next.addEventListener('click', ()=>{ this.nextSlide(); });
+          this.dots.forEach((d,i)=> d.addEventListener('click', ()=>{ this.go(i); }));
+          this.start();
+          this.track.addEventListener('mouseenter', ()=> this.pause());
+          this.track.addEventListener('mouseleave', ()=> this.start());
+        }
+        update(){ this.track.style.transform = `translateX(${-this.idx*100}%)`; this.dots.forEach((d,i)=>d.classList.toggle('active', i===this.idx)); }
+        nextSlide(){ this.idx = (this.idx + 1) % this.slides.length; this.update(); }
+        prevSlide(){ this.idx = (this.idx - 1 + this.slides.length) % this.slides.length; this.update(); }
+        go(i){ this.idx = i; this.update(); }
+        start(){ if(this.timer) clearInterval(this.timer); this.timer = setInterval(()=> this.nextSlide(), this.interval); }
+        pause(){ if(this.timer) clearInterval(this.timer); this.timer = null; }
       }
-      init() {
-        this.update();
-        this.prevBtn.addEventListener('click', () => this.prev());
-        this.nextBtn.addEventListener('click', () => this.next());
-        this.dots.forEach((dot, i) => dot.addEventListener('click', () => this.goTo(i)));
-        this.container.addEventListener('mouseenter', () => this.pause());
-        this.container.addEventListener('mouseleave', () => this.play());
-        this.container.addEventListener('touchstart', (e) => this.onTouchStart(e), {passive:true});
-        this.container.addEventListener('touchmove', (e) => this.onTouchMove(e), {passive:true});
-        this.container.addEventListener('touchend', () => this.onTouchEnd());
-        this.start();
-      }
-      update() {
-        this.track.style.transform = 'translateX(' + (-this.current * 100) + '%)';
-        this.slides.forEach((slide, i) => slide.classList.toggle('active', i === this.current));
-        this.dots.forEach((dot, i) => dot.classList.toggle('active', i === this.current));
-      }
-      next() { this.current = (this.current + 1) % this.total; this.update(); }
-      prev() { this.current = (this.current - 1 + this.total) % this.total; this.update(); }
-      goTo(index) { this.current = index % this.total; this.update(); }
-      start() { if (this.autoplay && !this.timer) this.timer = setInterval(() => this.next(), this.interval); }
-      pause() { if (this.timer) { clearInterval(this.timer); this.timer = null; } }
-      play() { if (!this.timer) this.start(); }
-      onTouchStart(e) { if (!e.touches || e.touches.length===0) return; this.pause(); this.startX = e.touches[0].clientX; this.deltaX = 0; }
-      onTouchMove(e) { if (!e.touches || e.touches.length===0) return; this.deltaX = e.touches[0].clientX - this.startX; }
-      onTouchEnd() { if (Math.abs(this.deltaX) > this.swipeThreshold) { if (this.deltaX < 0) this.next(); else this.prev(); } this.play(); }
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      window.yoruMochiSlider = new YoruMochiSlider({ autoplay: true, interval: 4200 });
-    });
+      document.addEventListener('DOMContentLoaded', ()=>{ window._slider = new Slider(); });
+    })();
   </script>
 </body>
 </html>
