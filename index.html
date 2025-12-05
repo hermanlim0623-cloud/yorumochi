@@ -5,58 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Yoru & Mochi - Official</title>
   <meta name="description" content="Cute daily shorts - pet adventures, adorable moments, and tiny discoveries. Follow Yoru & Mochi on YouTube, TikTok & Instagram." />
-  <link rel="canonical" href="https://yorumochi.com/" />
-  <link rel="icon" type="image/png" sizes="180x180" href="/images/yoru_mochi_favicon.png">
 
-  <!-- Open Graph / Twitter (normal to duplicate descriptions for each platform) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yorumochi.com/">
-  <meta property="og:title" content="Yoru & Mochi — Cute Daily Pet Adventures">
-  <meta property="og:description" content="Cute daily shorts - pet adventures, adorable moments, and tiny discoveries.">
-  <meta property="og:image" content="https://yorumochi.com/images/yoru_mochi_og.jpg?v=1">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="Yoru & Mochi — cute guinea pigs">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yoru & Mochi — Cute Daily Pet Adventures">
-  <meta name="twitter:description" content="Cute daily shorts - pet adventures, adorable moments, and tiny discoveries.">
-  <meta name="twitter:image" content="https://yorumochi.com/images/yoru_mochi_og.jpg?v=1">
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"Organization",
-        "@id":"https://yorumochi.com/#organization",
-        "name":"Yoru & Mochi",
-        "url":"https://yorumochi.com/",
-        "logo":{
-          "@type":"ImageObject",
-          "url":"https://yorumochi.com/images/yoru_mochi_og.jpg?v=1",
-          "width":1200,
-          "height":630
-        },
-        "sameAs":[
-          "https://www.youtube.com/@YoruMochi-2306",
-          "https://www.instagram.com/yoru.mochi",
-          "https://www.tiktok.com/@yoru.mochi",
-          "https://linktr.ee/YoruMochi"
-        ],
-        "description":"Yoru & Mochi — Cute daily shorts: pet adventures, adorable moments, and tiny discoveries.",
-        "foundingDate":"2025"
-      }
-    ]
-  }
-  </script>
+  <!-- Preload images untuk prioritas muat -->
+  <link rel="preload" as="image" href="images/pet1.png">
+  <link rel="preload" as="image" href="images/pet2.png">
+  <link rel="preload" as="image" href="images/yoru_mochi_og.jpg">
 
   <style>
     :root{
       --bg:#f7f8fa;
       --panel:#ffffff;
-      --accent:#FFD9B6;
       --muted:#9aa7b0;
       --text:#3b4752;
       --text-dark:#071026;
@@ -64,13 +22,8 @@
       --dot:#ffdca8;
       --shadow:0 14px 34px rgba(25,35,45,0.10);
     }
-
-    /* Reset & safety */
     *, *::before, *::after { box-sizing: border-box; }
-    html, body { height:100%; width:100%; margin:0; padding:0; }
-    html, body { overflow-x: hidden; } /* MENCEGAH horizontal drag/space */
-
-    /* Use dynamic vh fallback for older mobiles */
+    html, body { height:100%; width:100%; margin:0; padding:0; overflow-x:hidden; }
     :root { --vh: 1vh; }
 
     body{
@@ -81,16 +34,15 @@
       align-items:center;
       justify-content:center;
       padding:20px;
-      min-height: calc(var(--vh, 1vh) * 100); /* fallback untuk 100vh mobile */
+      min-height: calc(var(--vh, 1vh) * 100);
       background-size:cover;
       background-repeat:no-repeat;
-      overflow-y:auto; /* biarkan vertikal scroll bila perlu */
+      overflow-y:auto;
       position:relative;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
 
-    /* page wrapper handle safe-area insets */
     .page-inner{
       width:100%;
       display:flex;
@@ -102,61 +54,93 @@
       padding-bottom:env(safe-area-inset-bottom, 0px);
     }
 
-    /* Decorative blobs/clouds */
+    /* dekoratif pet (pastikan file ada di /images/) */
+    .decor-pet{
+      position:fixed;
+      pointer-events:none;
+      user-select:none;
+      z-index:6;                /* di atas card agar jelas terlihat; ubah jika mau di belakang */
+      opacity:0;
+      will-change:transform,opacity;
+      filter: drop-shadow(0 18px 36px rgba(15,25,35,0.08));
+      transition: opacity 180ms linear;
+      display:block;
+    }
+    .decor-pet.visible{ opacity:1; }
+
+    .pet-top{
+      top:6%;
+      left:4%;
+      width:16vw;
+      max-width:160px;
+      min-width:80px;
+      animation:petFloatRight 26s linear infinite;
+    }
+    .pet-bottom{
+      right:4%;
+      bottom:6%;
+      width:18vw;
+      max-width:180px;
+      min-width:90px;
+      animation:petFloatLeft 28s linear infinite;
+      animation-delay:-4s;
+    }
+
+    @keyframes petFloatRight{
+      0%   { transform: translate3d(0,0,0) scale(1); }
+      25%  { transform: translate3d(6vw,-6px,0) scale(1.02); }
+      50%  { transform: translate3d(0,-3px,0) scale(0.99); }
+      75%  { transform: translate3d(4vw,-8px,0) scale(1.01); }
+      100% { transform: translate3d(0,0,0) scale(1); }
+    }
+    @keyframes petFloatLeft{
+      0%   { transform: translate3d(0,0,0) scale(1); }
+      25%  { transform: translate3d(-6vw,6px,0) scale(1.02); }
+      50%  { transform: translate3d(0,3px,0) scale(0.99); }
+      75%  { transform: translate3d(-4vw,8px,0) scale(1.01); }
+      100% { transform: translate3d(0,0,0) scale(1); }
+    }
+
+    @media (max-width:420px){
+      .pet-top{ width:26vw; max-width:120px; top:4%; left:6%; }
+      .pet-bottom{ width:30vw; max-width:130px; right:6%; bottom:4%; }
+    }
+
+    /* Decorative blobs behind */
     body::before, body::after{ content:''; position:fixed; border-radius:50%; filter:blur(36px); opacity:0.65; pointer-events:none; z-index:0; }
     body::before{ width:260px;height:260px; left:8%; top:6%; background:radial-gradient(circle,#d8f3ff,#d8f3ff00); }
     body::after{ width:220px;height:220px; right:6%; bottom:8%; background:radial-gradient(circle,#ffdfe3,#ffdfe300); }
 
-    .cloud{ position:absolute; width:110px; height:60px; background:rgba(255,255,255,0.92); border-radius:50px; box-shadow:18px 10px 0 rgba(255,255,255,0.95), -18px 12px 0 rgba(255,255,255,0.96); filter:blur(0.2px); opacity:0.9; z-index:1; animation:cloudFloat 24s linear infinite; }
-    .cloud::before,.cloud::after{ content:''; position:absolute; background:rgba(255,255,255,0.98); border-radius:50%; }
-    .cloud::before{ width:52px;height:52px; left:-12px; top:-18px; }
-    .cloud::after{ width:68px;height:68px; right:-18px; top:-24px; }
-    .cloud.cloud-1{ top:12%; left:-18%; animation-duration:26s; }
-    .cloud.cloud-2{ top:38%; right:-22%; animation-duration:30s; animation-delay:-8s; }
-    .cloud.cloud-3{ bottom:14%; left:-25%; animation-duration:34s; animation-delay:-4s; }
-    @keyframes cloudFloat{ 0%{transform:translateX(0)} 50%{transform:translateX(140%) translateY(-6px)} 100%{transform:translateX(280%)} }
-
-    /* Center mockup */
-    .wrap{
-      width:100%;
-      max-width:380px;
-      width: min(92vw, 380px); /* jangan melebihi viewport */
-      padding:16px;
-      position:relative;
-      z-index:2;
-      margin:0 auto;
-      box-sizing:border-box;
-    }
-
+    /* main card */
+    .wrap{ width:100%; max-width:380px; width: min(92vw, 380px); padding:16px; position:relative; z-index:2; margin:0 auto; box-sizing:border-box; }
     .card{
       position:relative;
-      background:linear-gradient(180deg,rgba(255,255,255,0.96),rgba(255,250,247,0.96));
+      background:rgba(255,255,255,0.94);
       border-radius:20px;
       padding:22px 18px 18px;
-      box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,0.8);
+      box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,0.85);
       border:1px solid rgba(255,255,255,0.75);
       transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
       overflow:visible;
       z-index:3;
       min-height:360px;
+      color:var(--text-dark);
     }
-
-    /* Blurred header image — dibatasi supaya tidak menyebabkan overflow */
     .card::before{
       content:'';
       position:absolute;
       left:50%;
       top:-8px;
       transform:translateX(-50%);
-      width:110%;        /* aman, tidak terlalu lebar */
+      width:110%;
       max-width:420px;
       height:50%;
-      background-image:url('/images/yoru_mochi_og.jpg?v=1');
+      background-image:url('images/yoru_mochi_og.jpg');
       background-size:cover;
       background-position:center center;
-      filter:blur(10px) saturate(1.03) brightness(0.96);
+      filter:blur(8px) saturate(1.03) brightness(0.96);
       border-radius:22px;
-      opacity:0.9;
+      opacity:0.85;
       pointer-events:none;
       z-index:1;
     }
@@ -164,39 +148,32 @@
       content:'';
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg,rgba(255,255,255,0.94),rgba(255,250,247,0.90));
+      background:linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,250,247,0.82));
       box-shadow:inset 0 40px 80px rgba(0,0,0,0.03);
       border-radius:20px;
       z-index:2;
       pointer-events:none;
     }
     .card > *{ position:relative; z-index:3; }
-
     .hero{ text-align:center; padding-top:8px; }
-    h1{ margin:8px 0 0; font-size:20px; color:var(--text); font-weight:700; }
+    h1{ margin:8px 0 0; font-size:20px; font-weight:700; color:var(--text-dark); }
     p.lead{ margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
     .meta{ color:#56626b; font-weight:600; margin-top:8px; font-size:13px; }
 
-    /* Carousel core - ensure no horizontal overflow */
+    /* carousel */
     .carousel-container{ position:relative; width:100%; margin-top:18px; border-radius:16px; overflow:hidden; padding:8px 0 6px; }
     .carousel-track{ display:flex; width:100%; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
     .carousel-slide{ min-width:100%; flex:0 0 100%; display:flex; align-items:center; justify-content:center; padding:0 6px 4px; box-sizing:border-box; text-align:center; }
-
     .slide-content{ max-width:320px; width:100%; margin:0 auto; background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,250,247,0.97)); border-radius:18px; padding:26px 22px 22px; box-shadow:0 12px 30px rgba(25,35,45,0.09); border:1px solid rgba(0,0,0,0.02); }
 
     .slide-icon-wrap{ width:64px; height:64px; border-radius:22px; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 30% 20%,#ffffff, #ffe6c3); box-shadow:0 10px 22px rgba(255,190,130,0.35), inset 0 1px 0 rgba(255,255,255,0.9); transform:translateY(0); animation:jellyBounce 2.4s ease-in-out infinite; }
     @keyframes jellyBounce{ 0%,100%{transform:translateY(0) scale(1);} 35%{transform:translateY(-6px) scale(1.03,0.97);} 55%{transform:translateY(0) scale(0.98,1.02);} 75%{transform:translateY(-3px) scale(1.01);} }
-
     .slide-title{ font-size:16px; font-weight:700; margin-bottom:6px; color:var(--text-dark); }
     .slide-description{ color:var(--muted); margin-bottom:14px; font-size:13px; }
-
     .cta-button{ display:inline-flex; align-items:center; gap:0.45rem; padding:0.58rem 1.18rem; background:linear-gradient(180deg,var(--gold),#FFE9AD); color:var(--text-dark); border-radius:999px; font-weight:700; font-size:14px; text-decoration:none; box-shadow:0 8px 20px rgba(255,200,120,0.26); border:none; transition:transform .18s ease, box-shadow .18s ease, filter .18s ease; }
 
-    /* Nav buttons: adjusted so they don't cause overflow on mobile */
     .nav-button{ position:absolute; top:56%; background:rgba(255,255,255,0.85); border:1px solid rgba(255,255,255,0.9); width:36px; height:36px; padding:0; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:4; color:var(--text); box-shadow:0 4px 14px rgba(20,30,40,0.10); font-size:16px; transition:background .2s ease, transform .2s ease, box-shadow .2s ease; backdrop-filter:blur(6px); }
-    /* Desktop: keep slightly outside for style but within safe boundary thanks to overflow-x:hidden */
     @media (min-width:421px){ .nav-button.prev{ left: -18px; } .nav-button.next{ right: -18px; } }
-    /* Mobile: keep inside viewport */
     @media (max-width:420px){ .nav-button.prev{ left:8px; } .nav-button.next{ right:8px; top:50%; transform:translateY(-50%); width:34px; height:34px; font-size:15px; } }
 
     .pagination{ display:flex; justify-content:center; gap:0.5rem; margin-top:10px; }
@@ -205,7 +182,6 @@
 
     .footer{ display:none !important; }
 
-    /* Responsive tweaks */
     @media (max-width:420px){
       body{ padding:12px; }
       .wrap{ padding:10px; }
@@ -214,19 +190,18 @@
       .carousel-slide{ padding:0 6px 6px; }
       .slide-content{ padding:20px; max-width:86vw; }
     }
-
-    @media (min-width:768px){
-      .wrap{ max-width:410px; }
-      .card{ min-height:400px; }
-    }
-
-    @media (prefers-reduced-motion:reduce){
-      *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition:none !important; }
-    }
+    @media (min-width:768px){ .wrap{ max-width:410px; } .card{ min-height:400px; } }
+    @media (prefers-reduced-motion:reduce){ *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition:none !important; } }
   </style>
 </head>
 <body>
   <div class="page-inner">
+
+    <!-- pet images: relative path (images/) -->
+    <img id="pet1" src="images/pet1.png" alt="pet1" class="decor-pet pet-top" aria-hidden="true" loading="eager">
+    <img id="pet2" src="images/pet2.png" alt="pet2" class="decor-pet pet-bottom" aria-hidden="true" loading="eager">
+
+    <!-- kept original clouds if desired -->
     <div class="cloud cloud-1" aria-hidden="true"></div>
     <div class="cloud cloud-2" aria-hidden="true"></div>
     <div class="cloud cloud-3" aria-hidden="true"></div>
@@ -290,11 +265,35 @@
     </div>
   </div>
 
-  <!-- Small JS: tilt + slider (autoplay + swipe) -->
+  <!-- JS: small helpers (preload fallback + show pets quickly + slider/tilt) -->
   <script>
-    // set dynamic vh for mobile fallback
+    // dynamic vh fallback
     (function(){ function setVh(){ document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px'); } setVh(); window.addEventListener('resize', setVh); })();
 
+    // fallback to raw GitHub if local images can't load (works both local preview and GH Pages)
+    (function(){
+      const baseRaw = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
+      [['pet1','pet1.png'], ['pet2','pet2.png']].forEach(([id,file])=>{
+        const img = document.getElementById(id);
+        if(!img) return;
+        // if already loaded successfully -> show
+        if(img.complete && img.naturalWidth !== 0){
+          img.classList.add('visible');
+        } else {
+          img.addEventListener('load', function(){ img.classList.add('visible'); });
+          img.addEventListener('error', function fallback(){
+            if (img.src.indexOf('raw.githubusercontent.com') === -1) {
+              img.src = baseRaw + file;
+            }
+            img.removeEventListener('error', fallback);
+          });
+          // safety show after 500ms in case load events are delayed
+          setTimeout(function(){ img.classList.add('visible'); }, 500);
+        }
+      });
+    })();
+
+    // tilt effect
     (function(){
       const mainCard = document.getElementById('mainCard');
       function onMove(e){
@@ -312,6 +311,7 @@
       }
     })();
 
+    // slider
     class YoruMochiSlider {
       constructor(options = {}) {
         this.track = document.getElementById('carouselTrack');
@@ -330,7 +330,6 @@
         this.swipeThreshold = 40;
         this.init();
       }
-
       init() {
         this.update();
         this.prevBtn.addEventListener('click', () => this.prev());
@@ -343,21 +342,17 @@
         this.container.addEventListener('touchend', () => this.onTouchEnd());
         this.start();
       }
-
       update() {
         this.track.style.transform = 'translateX(' + (-this.current * 100) + '%)';
         this.slides.forEach((slide, i) => slide.classList.toggle('active', i === this.current));
         this.dots.forEach((dot, i) => dot.classList.toggle('active', i === this.current));
       }
-
       next() { this.current = (this.current + 1) % this.total; this.update(); }
       prev() { this.current = (this.current - 1 + this.total) % this.total; this.update(); }
       goTo(index) { this.current = index % this.total; this.update(); }
-
       start() { if (this.autoplay && !this.timer) this.timer = setInterval(() => this.next(), this.interval); }
       pause() { if (this.timer) { clearInterval(this.timer); this.timer = null; } }
       play() { if (!this.timer) this.start(); }
-
       onTouchStart(e) { if (!e.touches || e.touches.length===0) return; this.pause(); this.startX = e.touches[0].clientX; this.deltaX = 0; }
       onTouchMove(e) { if (!e.touches || e.touches.length===0) return; this.deltaX = e.touches[0].clientX - this.startX; }
       onTouchEnd() { if (Math.abs(this.deltaX) > this.swipeThreshold) { if (this.deltaX < 0) this.next(); else this.prev(); } this.play(); }
