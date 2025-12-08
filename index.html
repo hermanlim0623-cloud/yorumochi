@@ -4,17 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-  <!-- SEO: Title & Meta Description -->
+  <!-- SEO -->
   <title>Cute Guinea Pig Videos & Funny Pet Shorts – YoruMochi</title>
   <meta name="description" content="Watch cute guinea pig videos, adorable pet moments, and funny guinea pig shorts on YoruMochi. Updated daily with the cutest content online." />
 
-  <!-- FAVICON: tambahkan baris ini -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/images/yoru_mochi_favicon.png">
-  
+
   <!-- Canonical -->
   <link rel="canonical" href="https://yorumochi.com/" />
 
-  <!-- Open Graph (Social Preview) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Cute Guinea Pig Videos & Funny Pet Shorts – YoruMochi" />
   <meta property="og:description" content="Watch cute guinea pig videos, adorable pet moments, and funny guinea pig shorts on YoruMochi. Updated daily with the cutest content online." />
@@ -28,322 +28,730 @@
   <meta name="twitter:description" content="Watch cute guinea pig videos, adorable pet moments, and funny guinea pig shorts on YoruMochi. Updated daily with the cutest content online." />
   <meta name="twitter:image" content="https://yorumochi.com/images/yoru_mochi_favicon.png" />
 
-  <!-- Sitemap (agar mudah ditemukan oleh crawler) -->
+  <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-  <!-- Preload images untuk prioritas muat (biarkan hanya yang dipakai segera) -->
+  <!-- Preload images -->
   <link rel="preload" as="image" href="/images/pet1.webp">
   <link rel="preload" as="image" href="/images/pet2.webp">
-  <!-- NOTE: yoru_mochi_og.png preload dihapus untuk menghindari warning jika tidak dipakai langsung -->
 
-  <!-- Optional: favicons -->
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Optional: theme color for mobile browsers -->
-  <meta name="theme-color" content="#FFF7F0" />
+  <!-- Theme color -->
+  <meta name="theme-color" content="#FFF0F5" />
 
-  <!-- Optional: instruct robots (biarkan index, follow) -->
+  <!-- Robots -->
   <meta name="robots" content="index, follow" />
 
   <style>
-    :root{
-      --bg:#f7f8fa;
-      --panel:#ffffff;
-      --muted:#9aa7b0;
-      --text:#3b4752;
-      --text-dark:#071026;
-      --gold:#FFE18A;
-      --dot:#ffdca8;
-      --shadow:0 14px 34px rgba(25,35,45,0.10);
-      --card-width: 380px;
+    :root {
+      --color-primary: #FF69B4;
+      --color-primary-light: #FFB6C1;
+      --color-primary-dark: #FF1493;
+      --color-secondary: #98FB98;
+      --color-secondary-light: #F0FFF0;
+      --color-accent: #FFD700;
+      --color-accent-light: #FFF8DC;
+      --color-coral: #FF7F7F;
+      --color-peach: #FFCCCB;
+      --color-lavender: #E6E6FA;
+      --color-mint: #F0FFF0;
+      
+      --color-text-primary: #4A4A4A;
+      --color-text-secondary: #8A8A8A;
+      --color-text-cute: #FF69B4;
+      
+      --color-background: #FFF0F5;
+      --color-surface: #FFFFFF;
+      --color-glass: rgba(255, 255, 255, 0.85);
+      
+      --gradient-cute: linear-gradient(135deg, #FFB6C1 0%, #FFE4E1 50%, #F0FFF0 100%);
+      --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 240, 245, 0.9) 100%);
+      --gradient-button: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 50%, #FFD700 100%);
+      
+      --font-cute: 'Fredoka', cursive;
+      --font-friendly: 'Nunito', sans-serif;
+      
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 32px;
+      --space-xl: 48px;
+      --space-xxl: 64px;
+      
+      --shadow-cute: 0px 8px 32px rgba(255, 105, 180, 0.15);
+      --shadow-hover: 0px 16px 40px rgba(255, 105, 180, 0.25);
+      --shadow-card: 0px 6px 20px rgba(255, 182, 193, 0.3);
+      
+      --radius-cute: 25px;
+      --radius-round: 50%;
+      --radius-soft: 20px;
+      
+      --transition-cute: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { height:100%; width:100%; margin:0; padding:0; overflow-x:hidden; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; width: 100%; overflow-x: hidden; font-family: var(--font-friendly); background: var(--color-background); color: var(--color-text-primary); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     :root { --vh: 1vh; }
 
-    /* HIDE: sembunyikan seluruh section Artikel Terbaru */
-#articles { display: none !important; }
+    #articles { display: none !important; }
 
-    /* BODY fallback gradient (di bawah pattern) */
-    body{
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(135deg,#d8f3ff 0%,#ffe6e0 50%,#eaffea 100%);
-      color:var(--text);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
+    body {
+      background: linear-gradient(45deg, #FFF0F5 0%, #FFE4E1 25%, #F0FFF0 50%, #E6E6FA 75%, #FFF0F5 100%);
+      background-size: 400% 400%;
+      animation: cuteBackgroundShift 15s ease-in-out infinite;
+      position: relative;
       min-height: calc(var(--vh, 1vh) * 100);
-      background-size:cover;
-      background-repeat:no-repeat;
-      overflow-y:auto;
-      position:relative;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
     }
 
-    /* ===== PATTERN GRID LAYER (alternating pet1/pet2) ===== */
-    .pattern-grid{
-      position:fixed;
-      inset:0;
-      z-index:0; /* paling bawah */
-      pointer-events:none;
-      overflow:hidden;
-      background:transparent;
+    @keyframes cuteBackgroundShift {
+      0%, 100% { background-position: 0% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 50% 100%; }
+      75% { background-position: 0% 0%; }
     }
 
-    /* Revised pattern tile styling (muted + subtle shadow + rounded) */
-    .pattern-tile{
-      position:absolute;
-      background-size:cover;        /* cover agar tile tampak rapi */
-      background-position:center;
-      border-radius:14%;
-      opacity:0.88;                 /* mute agar tidak mendistraksi */
-      transition: opacity .24s ease, transform .24s ease;
-      filter: drop-shadow(0 8px 18px rgba(15,22,28,0.06)) saturate(0.95);
+    .floating-hearts {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      color: rgba(255, 182, 193, 0.3);
+      font-size: 20px;
+      animation: floatHeart 8s infinite linear;
+    }
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+
+    /* ===== PATTERN GRID LAYER (from minimal version) ===== */
+    .pattern-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.12;
+    }
+
+    .pattern-tile {
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      border-radius: 14%;
+      opacity: 0.88;
+      transition: opacity 0.24s ease, transform 0.24s ease;
+      filter: drop-shadow(0 8px 18px rgba(15, 22, 28, 0.06)) saturate(0.95);
       will-change: transform, opacity;
       pointer-events: none;
     }
 
-    /* overlay di atas pattern agar card terbaca (kurangi kontras pattern) */
-    .pattern-overlay{
+    /* === WIDER CARD LAYOUT === */
+    .page-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-xl) var(--space-lg);
+      position: relative;
+      z-index: 10;
+    }
+
+    .main-card {
+      width: 100%;
+      max-width: 600px;
+      background: var(--gradient-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid rgba(255, 182, 193, 0.5);
+      border-radius: var(--radius-cute);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-cute);
+      transition: all var(--transition-cute);
+      position: relative;
+      overflow: hidden;
+      color: var(--color-text-primary);
+      min-height: 520px;
+    }
+
+    @media (max-width: 768px) {
+      .main-card {
+        max-width: 450px;
+        min-height: 500px;
+        padding: var(--space-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-card {
+        max-width: 92vw;
+        min-height: 480px;
+        padding: var(--space-md) var(--space-lg);
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .carousel-container {
+        padding: var(--space-md);
+      }
+
+      .slide-content {
+        padding: var(--space-lg);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .main-card {
+        max-width: 700px;
+        min-height: 540px;
+      }
+    }
+
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: var(--gradient-cute);
+      border-radius: var(--radius-cute);
+      z-index: -1;
+      opacity: 0.3;
+    }
+    .main-card > * { position: relative; z-index: 2; }
+    .main-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-decorations { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 1; }
+    .decoration {
+      position: absolute;
+      font-size: 24px;
+      animation: cuteFloat 3s ease-in-out infinite;
+    }
+    .star-top-left { top: 15px; left: 15px; animation-delay: 0s; }
+    .star-top-right { top: 15px; right: 15px; animation-delay: -1s; }
+    .heart-bottom-left { bottom: 15px; left: 15px; animation-delay: -2s; }
+    .heart-bottom-right { bottom: 15px; right: 15px; animation-delay: -0.5s; }
+
+    @keyframes cuteFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      25% { transform: translateY(-8px) rotate(5deg) scale(1.1); }
+      50% { transform: translateY(-4px) rotate(-3deg) scale(0.95); }
+      75% { transform: translateY(-6px) rotate(2deg) scale(1.05); }
+    }
+
+    .hero-section { text-align: center; margin-bottom: var(--space-xl); }
+    .hero-title {
+      font-family: var(--font-cute);
+      font-size: 3rem;
+      font-weight: 700;
+      background: var(--gradient-button);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-sm);
+      letter-spacing: 2px;
+      line-height: 1.1;
+      text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+      animation: titleBounce 2s ease-in-out infinite;
+    }
+    @keyframes titleBounce {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
+      font-weight: 500;
+    }
+    .hero-meta {
+      color: var(--color-text-cute);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--space-lg);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .meta-icon {
+      font-size: 1.2rem;
+      animation: cuteSpin 4s linear infinite;
+    }
+    @keyframes cuteSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-md) var(--space-xl);
+      background: var(--gradient-button);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-cute);
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition-bounce);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    .cta-primary:hover::before { left: 100%; }
+    .cta-primary:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0px 12px 30px rgba(255,105,180,0.4); }
+    .cta-primary:active { transform: translateY(-1px) scale(0.98); }
+
+    .carousel-section { margin-top: var(--space-xl); }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: visible;
+      border-radius: var(--radius-soft);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-card);
+      padding: var(--space-lg);
+      border: 2px solid rgba(255, 182, 193, 0.3);
+    }
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      transition: transform var(--transition-cute);
+      will-change: transform;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      flex: 0 0 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+    }
+    .slide-content {
+      max-width: 320px;
+      width: 100%;
+      text-align: center;
+      background: var(--gradient-card);
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 182, 193, 0.4);
+      border-radius: var(--radius-soft);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition-cute);
+      position: relative;
+    }
+    .slide-content:hover {
+      transform: scale(1.03) translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .slide-icon-wrapper {
+      width: 90px;
+      height: 90px;
+      border-radius: var(--radius-round);
+      margin: 0 auto var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-button);
+      box-shadow: 0px 8px 25px rgba(255, 105, 180, 0.4);
+      transition: all var(--transition-cute);
+      animation: cutePulse 2s ease-in-out infinite;
+      border: 3px solid white;
+    }
+    @keyframes cutePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .slide-icon {
+      font-size: 2.5rem;
+      color: white;
+      animation: iconBounce 1.5s ease-in-out infinite;
+    }
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0px); }
+      25% { transform: translateY(-3px); }
+      75% { transform: translateY(2px); }
+    }
+
+    .slide-title {
+      font-family: var(--font-cute);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--color-text-cute);
+      margin-bottom: var(--space-sm);
+      line-height: 1.3;
+    }
+    .slide-description {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-lg);
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--gradient-button);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-cute);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all var(--transition-bounce);
+      box-shadow: var(--shadow-card);
+      border: none;
+      cursor: pointer;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0px 8px 25px rgba(255, 105, 180, 0.35);
+    }
+
+    /* === NAVIGATION BUTTONS === */
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--gradient-button);
+      border: 2px solid white;
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-round);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      transition: all var(--transition-bounce);
+      box-shadow: var(--shadow-hover);
+      animation: pulseButton 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseButton {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-50%) scale(1.05); }
+    }
+
+    .nav-button:hover {
+      transform: translateY(-50%) scale(1.15);
+      box-shadow: var(--shadow-hover);
+      animation: none;
+    }
+
+    .nav-button.prev {
+      left: -40px;
+      background: linear-gradient(135deg, #FF69B4, #FFB6C1);
+    }
+
+    .nav-button.next {
+      right: -40px;
+      background: linear-gradient(135deg, #FFD700, #FFE9AD);
+    }
+
+    @media (max-width: 768px) {
+      .nav-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      .nav-button.prev { left: -30px; }
+      .nav-button.next { right: -30px; }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+    .pagination-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: var(--radius-round);
+      background: rgba(255, 182, 193, 0.5);
+      border: 2px solid var(--color-primary);
+      cursor: pointer;
+      transition: all var(--transition-cute);
+    }
+    .pagination-dot.active {
+      background: var(--color-primary);
+      transform: scale(1.3);
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+    }
+    .pagination-dot:hover {
+      background: var(--color-primary-light);
+      transform: scale(1.1);
+    }
+
+    .decor-pet {
       position: fixed;
-      inset: 0;
-      z-index: 1;
       pointer-events: none;
-      background: linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,250,247,0.36));
+      user-select: none;
+      z-index: 6;
+      opacity: 0;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 8px 25px rgba(255, 105, 180, 0.3));
+      transition: opacity var(--transition-cute);
+    }
+    .decor-pet.visible {
+      opacity: 0.9;
+      animation: cutePetFloat 4s ease-in-out infinite;
+    }
+    .pet-top {
+      top: 8%;
+      left: 5%;
+      width: 12vw;
+      max-width: 120px;
+      min-width: 60px;
+      animation-delay: 0s;
+    }
+    .pet-bottom {
+      right: 5%;
+      bottom: 8%;
+      width: 14vw;
+      max-width: 140px;
+      min-width: 70px;
+      animation-delay: -2s;
+    }
+    @keyframes cutePetFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      25% { transform: translateY(-10px) rotate(2deg) scale(1.02); }
+      50% { transform: translateY(-5px) rotate(0deg) scale(0.98); }
+      75% { transform: translateY(-8px) rotate(-1deg) scale(1.01); }
     }
 
-    .page-inner{
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding-left:env(safe-area-inset-left, 0px);
-      padding-right:env(safe-area-inset-right, 0px);
-      padding-top:env(safe-area-inset-top, 0px);
-      padding-bottom:env(safe-area-inset-bottom, 0px);
-      position:relative;
-      z-index:3; /* di atas pattern & overlay */
+    .loading-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--color-background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity var(--transition-cute);
+    }
+    .loading-content { text-align: center; }
+    .loading-hearts { display: flex; gap: var(--space-sm); margin-bottom: var(--space-lg); }
+    .loading-heart {
+      font-size: 2rem;
+      animation: loadingHeart 1s ease-in-out infinite;
+    }
+    .loading-heart:nth-child(2) { animation-delay: 0.2s; }
+    .loading-heart:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes loadingHeart {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+    .loading-text {
+      font-family: var(--font-cute);
+      font-size: 1.5rem;
+      color: var(--color-text-cute);
+      font-weight: 600;
     }
 
-    /* dekoratif pet - masih ada (posisi fixed) */
-    .decor-pet{
-      position:fixed;
-      pointer-events:none;
-      user-select:none;
-      z-index:6;
-      opacity:0;
-      will-change:transform,opacity;
-      filter: drop-shadow(0 18px 36px rgba(15,25,35,0.08));
-      transition: opacity 180ms linear;
-      display:block;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition: none !important;
+      }
     }
-    .decor-pet.visible{ opacity:1; }
-
-    .pet-top{
-      top:6%;
-      left:4%;
-      width:16vw;
-      max-width:160px;
-      min-width:80px;
-      animation:petFloatRight 26s linear infinite;
+    @media (prefers-contrast: high) {
+      .main-card {
+        background: var(--color-surface);
+        border: 3px solid var(--color-text-primary);
+      }
+      .cta-primary, .cta-button {
+        border: 2px solid var(--color-text-primary);
+      }
     }
-    .pet-bottom{
-      right:4%;
-      bottom:6%;
-      width:18vw;
-      max-width:180px;
-      min-width:90px;
-      animation:petFloatLeft 28s linear infinite;
-      animation-delay:-4s;
-    }
-    @keyframes petFloatRight{ 0%{transform:translate3d(0,0,0)}25%{transform:translate3d(6vw,-6px,0) scale(1.02)}50%{transform:translate3d(0,-3px,0) scale(.99)}75%{transform:translate3d(4vw,-8px,0) scale(1.01)}100%{transform:translate3d(0,0,0)} }
-    @keyframes petFloatLeft{ 0%{transform:translate3d(0,0,0)}25%{transform:translate3d(-6vw,6px,0) scale(1.02)}50%{transform:translate3d(0,3px,0) scale(.99)}75%{transform:translate3d(-4vw,8px,0) scale(1.01)}100%{transform:translate3d(0,0,0)} }
-
-    @media (max-width:420px){
-      .pet-top{ width:26vw; max-width:120px; top:4%; left:6%; }
-      .pet-bottom{ width:30vw; max-width:130px; right:6px; bottom:4%; }
-      /* pattern tile size on very small screens will be set by JS, this is fallback */
-      .pattern-tile{ width:70px; height:70px; }
-    }
-
-    /* Decorative blobs behind */
-    body::before, body::after{ content:''; position:fixed; border-radius:50%; filter:blur(36px); opacity:0.65; pointer-events:none; z-index:0; }
-    body::before{ width:260px;height:260px; left:8%; top:6%; background:radial-gradient(circle,#d8f3ff,#d8f3ff00); }
-    body::after{ width:220px;height:220px; right:6%; bottom:8%; background:radial-gradient(circle,#ffdfe3,#ffdfe300); }
-
-    /* main card */
-    .wrap{ width:100%; max-width:380px; width: min(92vw, 380px); padding:16px; position:relative; z-index:2; margin:0 auto; box-sizing:border-box; }
-    .card{
-      position:relative;
-      background:#ffffff; /* full white supaya kontras */
-      border-radius:20px;
-      padding:22px 18px 18px;
-      box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,0.85);
-      border:1px solid rgba(255,255,255,0.75);
-      transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
-      overflow:visible;
-      z-index:4;
-      min-height:360px;
-      color:var(--text-dark);
-    }
-.card::before{
-  display: none !important;
-  content: none !important;
-}
-    .card::after{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,250,247,0.98));
-      box-shadow:inset 0 40px 80px rgba(0,0,0,0.03);
-      border-radius:20px;
-      z-index:2;
-      pointer-events:none;
-    }
-    .card > *{ position:relative; z-index:3; }
-    .hero{ text-align:center; padding-top:8px; }
-    h1{ margin:8px 0 0; font-size:20px; font-weight:700; color:var(--text-dark); }
-    p.lead{ margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
-    .meta{ color:#56626b; font-weight:600; margin-top:8px; font-size:13px; }
-
-    /* carousel */
-    .carousel-container{ position:relative; width:100%; margin-top:18px; border-radius:16px; overflow:hidden; padding:8px 0 6px; height:260px; }
-    .carousel-track{ display:flex; width:100%; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform; height:100%; }
-    .carousel-slide{ min-width:100%; flex:0 0 100%; display:flex; align-items:center; justify-content:center; padding:0 6px 4px; box-sizing:border-box; text-align:center; height:100%; }
-    .slide-content{ max-width:320px; width:100%; margin:0 auto; background:linear-gradient(180deg,rgba(255,255,255,0.99),rgba(255,250,247,0.99)); border-radius:18px; padding:26px 22px 22px; box-shadow:0 12px 30px rgba(25,35,45,0.09); border:1px solid rgba(0,0,0,0.02); }
-
-    .slide-icon-wrap{ width:64px; height:64px; border-radius:22px; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 30% 20%,#ffffff, #ffe6c3); box-shadow:0 10px 22px rgba(255,190,130,0.35), inset 0 1px 0 rgba(255,255,255,0.9); transform:translateY(0); animation:jellyBounce 2.4s ease-in-out infinite; }
-    @keyframes jellyBounce{ 0%,100%{transform:translateY(0) scale(1);} 35%{transform:translateY(-6px) scale(1.03,0.97);} 55%{transform:translateY(0) scale(0.98,1.02);} 75%{transform:translateY(-3px) scale(1.01);} }
-    .slide-title{ font-size:16px; font-weight:700; margin-bottom:6px; color:var(--text-dark); }
-    .slide-description{ color:var(--muted); margin-bottom:14px; font-size:13px; }
-    .cta-button{ display:inline-flex; align-items:center; gap:0.45rem; padding:0.58rem 1.18rem; background:linear-gradient(180deg,var(--gold),#FFE9AD); color:var(--text-dark); border-radius:999px; font-weight:700; font-size:14px; text-decoration:none; box-shadow:0 8px 20px rgba(255,200,120,0.26); border:none; transition:transform .18s ease, box-shadow .18s ease, filter .18s ease; }
-
-    .nav-button{ position:absolute; top:56%; background:rgba(255,255,255,0.95); border:1px solid rgba(255,255,255,0.95); width:36px; height:36px; padding:0; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:5; color:var(--text); box-shadow:0 4px 14px rgba(20,30,40,0.10); font-size:16px; transition:background .2s ease, transform .2s ease, box-shadow .2s ease; backdrop-filter:blur(6px); }
-    @media (min-width:421px){ .nav-button.prev{ left: -18px; } .nav-button.next{ right: -18px; } }
-    @media (max-width:420px){ .nav-button.prev{ left:8px; } .nav-button.next{ right:8px; top:50%; transform:translateY(-50%); width:34px; height:34px; font-size:15px; } }
-
-    .pagination{ display:flex; justify-content:center; gap:0.5rem; margin-top:10px; }
-    .pagination-dot{ width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.8); border:none; box-shadow:0 3px 8px rgba(20,30,40,0.08); cursor:pointer; transition:transform .18s ease, background .18s ease; }
-    .pagination-dot.active{ background:var(--dot); transform:scale(1.18); }
-
-    .footer{ display:none !important; }
-
-    @media (max-width:420px){
-      body{ padding:12px; }
-      .wrap{ padding:10px; }
-      .card{ padding:18px 14px 22px; border-radius:16px; min-height:320px; }
-      .card::before{ width:110%; height:46%; top:-6px; border-radius:18px; filter:blur(9px) saturate(1.02) brightness(0.97); }
-      .carousel-slide{ padding:0 6px 6px; }
-      .slide-content{ padding:20px; max-width:86vw; }
-    }
-    @media (min-width:768px){ .wrap{ max-width:410px; } .card{ min-height:400px; } }
-    @media (prefers-reduced-motion:reduce){ *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition:none !important; } }
   </style>
 </head>
 <body>
-  <!-- pattern grid layer -->
+  <!-- Loading -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+      <div class="loading-hearts">
+        <span class="loading-heart">💖</span>
+        <span class="loading-heart">💖</span>
+        <span class="loading-heart">💖</span>
+      </div>
+      <div class="loading-text">Loading Cuteness...</div>
+    </div>
+  </div>
+
+  <!-- Floating Hearts -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <!-- Pattern Grid (added here) -->
   <div class="pattern-grid" id="patternGrid" aria-hidden="true"></div>
 
-  <!-- overlay di atas pattern -->
-  <div class="pattern-overlay" aria-hidden="true"></div>
+  <!-- Main Card -->
+  <div class="page-container">
+    <div class="main-card" id="mainCard" role="main" aria-label="Yoru & Mochi cute landing">
+      <div class="card-decorations">
+        <span class="decoration star-top-left">⭐</span>
+        <span class="decoration star-top-right">✨</span>
+        <span class="decoration heart-bottom-left">💖</span>
+        <span class="decoration heart-bottom-right">💕</span>
+      </div>
 
-  <div class="page-inner">
-
-    <!-- kept original clouds if desired -->
-    <div class="cloud cloud-1" aria-hidden="true"></div>
-    <div class="cloud cloud-2" aria-hidden="true"></div>
-    <div class="cloud cloud-3" aria-hidden="true"></div>
-
-    <div class="wrap">
-      <div class="card" id="mainCard" role="main" aria-label="Yoru & Mochi landing">
-        <div class="hero">
-          <h1>Yoru & Mochi</h1>
-          <p class="lead">Cute daily shorts - pet adventures, adorable moments, and tiny discoveries. Subscribe & follow so you never miss a new clip.</p>
-          <div class="meta">Official • Pet short videos</div>
-
-          <!-- ADDED: internal link to pillar page for SEO -->
-          <div style="margin-top:10px;">
-            <a href="/cute-guinea-pig-videos/" style="display:inline-block;padding:8px 12px;background:linear-gradient(180deg,var(--gold),#FFE9AD);border-radius:999px;color:var(--text-dark);font-weight:700;text-decoration:none;box-shadow:0 8px 20px rgba(255,200,120,0.16);" aria-label="Browse Cute Guinea Pig Videos">Browse Cute Guinea Pig Videos →</a>
-          </div>
-
+      <div class="hero-section">
+        <h1 class="hero-title">Yoru & Mochi</h1>
+        <p class="hero-subtitle">Cute daily shorts - pet adventures, adorable moments, and tiny discoveries. Subscribe & follow so you never miss a new clip.</p>
+        <div class="hero-meta">
+          <span class="meta-icon">🐹</span>
+          Official • Pet short videos
+          <span class="meta-icon">🐹</span>
         </div>
+        <a href="/cute-guinea-pig-videos/" class="cta-primary" aria-label="Browse Cute Guinea Pig Videos">
+          💖 Browse Cute Guinea Pig Videos ✨
+        </a>
+      </div>
 
+      <div class="carousel-section">
         <div class="carousel-container" role="region" aria-label="Social media platform navigation">
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 3: Watch on YouTube">
               <div class="slide-content">
-                <div class="slide-icon-wrap"><span class="slide-icon" aria-hidden="true">▶</span></div>
+                <div class="slide-icon-wrapper">
+                  <span class="slide-icon" aria-hidden="true">📺</span>
+                </div>
                 <h2 class="slide-title">Watch on YouTube</h2>
-                <p class="slide-description">Daily joyful shorts of Yoru & Mochi in one cozy channel.</p>
+                <p class="slide-description">Daily joyful shorts of Yoru & Mochi in one cozy channel. 💕</p>
                 <a href="https://www.youtube.com/@YoruMochi-2306" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Open Yoru & Mochi on YouTube">
-                  <span>Open</span><span class="arrow">→</span>
+                  <span>🎬 Open</span>
                 </a>
               </div>
             </div>
 
             <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 3: Watch on TikTok">
               <div class="slide-content">
-                <div class="slide-icon-wrap"><span class="slide-icon" aria-hidden="true">♪</span></div>
+                <div class="slide-icon-wrapper">
+                  <span class="slide-icon" aria-hidden="true">🎵</span>
+                </div>
                 <h2 class="slide-title">Watch on TikTok</h2>
-                <p class="slide-description">Fast, tiny adventures and trending sound moments.</p>
+                <p class="slide-description">Fast, tiny adventures and trending sound moments. ✨</p>
                 <a href="https://www.tiktok.com/@yoru.mochi" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Open Yoru & Mochi on TikTok">
-                  <span>Open</span><span class="arrow">→</span>
+                  <span>🎭 Open</span>
                 </a>
               </div>
             </div>
 
             <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 3: Follow on Instagram">
               <div class="slide-content">
-                <div class="slide-icon-wrap"><span class="slide-icon" aria-hidden="true">📸</span></div>
+                <div class="slide-icon-wrapper">
+                  <span class="slide-icon" aria-hidden="true">📸</span>
+                </div>
                 <h2 class="slide-title">Follow on Instagram</h2>
-                <p class="slide-description">Behind-the-scenes photos, stories, and cozy daily vibes.</p>
+                <p class="slide-description">Behind-the-scenes photos, stories, and cozy daily vibes. 💖</p>
                 <a href="https://www.instagram.com/yoru.mochi" class="cta-button" target="_blank" rel="noopener noreferrer" aria-label="Open Yoru & Mochi on Instagram">
-                  <span>Open</span><span class="arrow">→</span>
+                  <span>💫 Open</span>
                 </a>
               </div>
             </div>
           </div>
-        </div>
 
-        <button class="nav-button prev" type="button" aria-label="Previous slide">‹</button>
-        <button class="nav-button next" type="button" aria-label="Next slide">›</button>
+          <button class="nav-button prev" type="button" aria-label="Previous slide">◀</button>
+          <button class="nav-button next" type="button" aria-label="Next slide">▶</button>
+        </div>
 
         <div class="pagination" role="tablist" aria-label="Slide navigation">
           <button class="pagination-dot active" type="button" aria-label="Go to slide 1"></button>
           <button class="pagination-dot" type="button" aria-label="Go to slide 2"></button>
           <button class="pagination-dot" type="button" aria-label="Go to slide 3"></button>
         </div>
-
-        <!-- === START: Internal Links Section (SEO) === -->
-        <section id="articles" style="margin:24px 0 8px; padding-top:6px; border-top:1px solid rgba(0,0,0,0.04);">
-          <h2 style="font-size:15px;margin:8px 0 8px;color:var(--text-dark);">Artikel Terbaru</h2>
-          <ul style="padding-left:18px;margin:0;color:var(--muted);line-height:1.6;font-size:14px;">
-            <li><a href="/apa-itu-guinea-pig" style="color:inherit;text-decoration:none;">Apa itu Guinea Pig?</a></li>
-            <li><a href="/yoru-mochi-duo-guinea-pig" style="color:inherit;text-decoration:none;">Yoru & Mochi — Duo Guinea Pig</a></li>
-            <li><a href="/5-hal-menarik-guinea-pig" style="color:inherit;text-decoration:none;">5 Hal Menarik Tentang Guinea Pig</a></li>
-            <li><a href="/tips-merawat-guinea-pig" style="color:inherit;text-decoration:none;">Tips Merawat Guinea Pig</a></li>
-            <li><a href="/manfaat-menonton-video-guinea-pig" style="color:inherit;text-decoration:none;">Manfaat Menonton Video Guinea Pig</a></li>
-            <li><a href="/mitos-tentang-guinea-pig" style="color:inherit;text-decoration:none;">Mitos Tentang Guinea Pig</a></li>
-          </ul>
-        </section>
-        <!-- === END: Internal Links Section (SEO) === -->
-
-        <div class="footer">Made with ♥ • Yoru & Mochi — Lightweight landing • <a href="/sitemap.xml" style="color:var(--muted);text-decoration:none">Sitemap</a></div>
       </div>
+
+      <section id="articles" style="display: none !important;">
+        <h2 style="font-size: 15px; margin: 8px 0 8px; color: var(--color-text-primary);">Artikel Terbaru</h2>
+        <ul style="padding-left: 18px; margin: 0; color: var(--color-text-secondary); line-height: 1.6; font-size: 14px;">
+          <li><a href="/apa-itu-guinea-pig" style="color: inherit; text-decoration: none;">Apa itu Guinea Pig?</a></li>
+          <li><a href="/yoru-mochi-duo-guinea-pig" style="color: inherit; text-decoration: none;">Yoru & Mochi — Duo Guinea Pig</a></li>
+          <li><a href="/5-hal-menarik-guinea-pig" style="color: inherit; text-decoration: none;">5 Hal Menarik Tentang Guinea Pig</a></li>
+          <li><a href="/tips-merawat-guinea-pig" style="color: inherit; text-decoration: none;">Tips Merawat Guinea Pig</a></li>
+          <li><a href="/manfaat-menonton-video-guinea-pig" style="color: inherit; text-decoration: none;">Manfaat Menonton Video Guinea Pig</a></li>
+          <li><a href="/mitos-tentang-guinea-pig" style="color: inherit; text-decoration: none;">Mitos Tentang Guinea Pig</a></li>
+        </ul>
+      </section>
     </div>
   </div>
 
-  <!-- JS: pattern grid builder + pet fallback + slider/tilt -->
-  <script>
-    // dynamic vh fallback
-    (function(){ function setVh(){ document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px'); } setVh(); window.addEventListener('resize', setVh); })();
+  <!-- Decor Pets -->
+  <img class="decor-pet pet-top" id="petTop" alt="" aria-hidden="true">
+  <img class="decor-pet pet-bottom" id="petBottom" alt="" aria-hidden="true">
 
-    /* ===== Pattern builder: staggered (brick) layout, responsive + fallback ===== */
-    (function(){
+  <!-- Scripts -->
+  <script>
+    // Dynamic vh
+    function setVh() {
+      document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+
+    // Loading hide
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const el = document.getElementById('loadingOverlay');
+        el.style.opacity = '0';
+        setTimeout(() => el.style.display = 'none', 600);
+      }, 1500);
+    });
+
+    // Floating hearts
+    function createFloatingHeart() {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.textContent = Math.random() > 0.5 ? '💖' : '💕';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 2 + 's';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      document.getElementById('floatingHearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createFloatingHeart, 3000);
+
+    // ===== PATTERN GRID BUILDER (from minimal version) =====
+    function buildPatternGrid() {
       const container = document.getElementById('patternGrid');
+      if (!container) return;
+
       const IMG1 = 'images/pet1.webp';
       const IMG2 = 'images/pet2.webp';
       const RAW_BASE = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
@@ -444,79 +852,158 @@
       } else {
         build();
       }
-    })();
+    }
 
-    // pet decorative images: show quickly and fallback to GH if local missing
-    (function(){
+    buildPatternGrid();
+
+    // Decor pets
+    function setupDecorativePets() {
       const baseRaw = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
-      [['pet1','pet1.webp'], ['pet2','pet2.webp']].forEach(([id,file])=>{
+      [['petTop', 'pet1.webp'], ['petBottom', 'pet2.webp']].forEach(([id, file]) => {
         const img = document.getElementById(id);
-        if(!img) return;
-        if(img.complete && img.naturalWidth !== 0){
+        if (!img) return;
+        if (img.complete && img.naturalWidth !== 0) {
           img.classList.add('visible');
         } else {
-          img.addEventListener('load', function(){ img.classList.add('visible'); });
-          img.addEventListener('error', function fallback(){
-            if (img.src.indexOf('raw.githubusercontent.com') === -1) {
+          img.addEventListener('load', () => img.classList.add('visible'));
+          img.addEventListener('error', function fallback() {
+            if (!img.src.includes('raw.githubusercontent.com')) {
               img.src = baseRaw + file;
             }
             img.removeEventListener('error', fallback);
           });
-          setTimeout(function(){ img.classList.add('visible'); }, 500);
+          setTimeout(() => img.classList.add('visible'), 2000);
         }
       });
-    })();
+    }
+    setupDecorativePets();
 
-    // tilt effect
-    (function(){
-      const mainCard = document.getElementById('mainCard');
-      function onMove(e){
-        const rect = mainCard.getBoundingClientRect();
-        const x = (e.clientX - rect.left) - rect.width/2;
-        const y = (e.clientY - rect.top) - rect.height/2;
+    // Tilt
+    function setupCuteTiltEffect() {
+      const card = document.getElementById('mainCard');
+      if (!card || !window.matchMedia('(hover: hover)').matches) return;
+
+      let isHover = false;
+      function onMove(e) {
+        if (!isHover) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
         const rx = -(y / rect.height) * 3;
         const ry = (x / rect.width) * 3;
-        mainCard.style.transform = 'translateY(-4px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+        card.style.transform = `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg)`;
       }
-      function onLeave(){ mainCard.style.transform = ''; }
-      if (window.matchMedia('(hover: hover)').matches) {
-        mainCard.addEventListener('mousemove', onMove);
-        mainCard.addEventListener('mouseleave', onLeave);
+      function onEnter() { isHover = true; card.style.transition = 'transform 0.1s ease'; }
+      function onLeave() {
+        isHover = false;
+        card.style.transform = '';
+        card.style.transition = 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
       }
-    })();
+      card.addEventListener('mouseenter', onEnter);
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', onLeave);
+    }
+    setupCuteTiltEffect();
 
-    // slider (same logic)
-    (function(){
-      class Slider {
-        constructor(options = {}) {
-          this.track = document.getElementById('carouselTrack');
-          this.slides = this.track.querySelectorAll('.carousel-slide');
-          this.prev = document.querySelector('.nav-button.prev');
-          this.next = document.querySelector('.nav-button.next');
-          this.dots = document.querySelectorAll('.pagination-dot');
-          this.idx = 0;
-          this.interval = options.interval || 4200;
-          this.timer = null;
-          this.init();
-        }
-        init(){
-          this.update();
-          this.prev.addEventListener('click', ()=>{ this.prevSlide(); });
-          this.next.addEventListener('click', ()=>{ this.nextSlide(); });
-          this.dots.forEach((d,i)=> d.addEventListener('click', ()=>{ this.go(i); }));
-          this.start();
-          this.track.addEventListener('mouseenter', ()=> this.pause());
-          this.track.addEventListener('mouseleave', ()=> this.start());
-        }
-        update(){ this.track.style.transform = `translateX(${-this.idx*100}%)`; this.dots.forEach((d,i)=>d.classList.toggle('active', i===this.idx)); }
-        nextSlide(){ this.idx = (this.idx + 1) % this.slides.length; this.update(); }
-        prevSlide(){ this.idx = (this.idx - 1 + this.slides.length) % this.slides.length; this.update(); }
-        go(i){ this.idx = i; this.update(); }
-        start(){ if(this.timer) clearInterval(this.timer); this.timer = setInterval(()=> this.nextSlide(), this.interval); }
-        pause(){ if(this.timer) clearInterval(this.timer); this.timer = null; }
+    // Slider
+    class CuteSlider {
+      constructor(interval = 4000) {
+        this.track = document.getElementById('carouselTrack');
+        this.slides = this.track.querySelectorAll('.carousel-slide');
+        this.prev = document.querySelector('.nav-button.prev');
+        this.next = document.querySelector('.nav-button.next');
+        this.dots = document.querySelectorAll('.pagination-dot');
+        this.idx = 0;
+        this.interval = interval;
+        this.timer = null;
+        this.isAnimating = false;
+        this.init();
       }
-      document.addEventListener('DOMContentLoaded', ()=>{ window._slider = new Slider(); });
-    })();
+      init() {
+        this.update();
+        this.prev.addEventListener('click', () => this.prevSlide());
+        this.next.addEventListener('click', () => this.nextSlide());
+        this.dots.forEach((dot, i) => dot.addEventListener('click', () => this.go(i)));
+        this.start();
+        this.setupHoverPause();
+      }
+      update() {
+        this.track.style.transform = `translateX(${-this.idx * 100}%)`;
+        this.dots.forEach((dot, i) => dot.classList.toggle('active', i === this.idx));
+      }
+      nextSlide() {
+        if (this.isAnimating) return;
+        this.isAnimating = true;
+        this.idx = (this.idx + 1) % this.slides.length;
+        this.update();
+        setTimeout(() => this.isAnimating = false, 400);
+      }
+      prevSlide() {
+        if (this.isAnimating) return;
+        this.isAnimating = true;
+        this.idx = (this.idx - 1 + this.slides.length) % this.slides.length;
+        this.update();
+        setTimeout(() => this.isAnimating = false, 400);
+      }
+      go(i) {
+        if (this.isAnimating || i === this.idx) return;
+        this.isAnimating = true;
+        this.idx = i;
+        this.update();
+        setTimeout(() => this.isAnimating = false, 400);
+      }
+      start() {
+        this.timer = setInterval(() => this.nextSlide(), this.interval);
+      }
+      pause() {
+        if (this.timer) clearInterval(this.timer);
+      }
+      setupHoverPause() {
+        const ctn = document.querySelector('.carousel-container');
+        ctn.addEventListener('mouseenter', () => this.pause());
+        ctn.addEventListener('mouseleave', () => this.start());
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.cuteSlider = new CuteSlider();
+    });
+
+    // Sparkle effect
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('cta-button') || e.target.classList.contains('cta-primary')) {
+        createSparkleEffect(e.clientX, e.clientY);
+      }
+    });
+
+    function createSparkleEffect(x, y) {
+      const sparkle = document.createElement('div');
+      sparkle.style.cssText = `
+        position: fixed;
+        left: ${x}px;
+        top: ${y}px;
+        width: 10px;
+        height: 10px;
+        background: radial-gradient(circle, #FFD700, transparent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        animation: sparkleEffect 0.6s ease-out forwards;
+      `;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 600);
+    }
+
+    // Add sparkle keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes sparkleEffect {
+        0% { transform: scale(0) rotate(0deg); opacity: 1; }
+        50% { transform: scale(1) rotate(180deg); opacity: 1; }
+        100% { transform: scale(0) rotate(360deg); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
