@@ -1,20 +1,75 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<title>Apa itu Guinea Pig? | YoruMochi</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Guinea pig adalah hewan peliharaan kecil yang ramah dan mudah dirawat. Artikel pendek untuk pemula.">
-<link rel="canonical" href="https://yorumochi.com/apa-itu-guinea-pig">
-<meta name="robots" content="index, follow">
+  <meta charset="utf-8">
+  <title>Apa itu Guinea Pig? | YoruMochi</title>
+  <meta name="description" content="Guinea pig adalah hewan peliharaan kecil yang ramah dan mudah dirawat — panduan singkat untuk pemula.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://yorumochi.com/apa-itu-guinea-pig">
+  <link rel="icon" type="image/png" href="/images/yoru_mochi_favicon.png">
+  <meta name="robots" content="index, follow">
+
+  <style>
+    body {margin:0;background:#071025;color:#e6eef8;font-family:Inter,Arial;padding:20px;line-height:1.7;}
+    .wrap {max-width:820px;margin:auto;}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand .emoji{font-size:20px}
+    nav a{color:#b8c7d9;text-decoration:none;font-weight:700;padding:8px 10px;border-radius:8px}
+    nav a:hover{background:rgba(255,255,255,0.03);color:#fff}
+    article{background:linear-gradient(180deg,#071025,#0b1730);padding:20px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.45)}
+    h1{font-size:28px;margin:0 0 12px}
+    .lead{color:#b8c7d9;margin:0 0 14px}
+    .content p{color:#cbd8ea;font-size:16px;margin:0 0 12px}
+    a.cta-link { display:inline-block; margin-top:12px; background:#ffdca8; color:#071025; padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:800; }
+    footer{margin-top:18px;color:#9fb0c8;font-size:13px;text-align:center}
+    @media (max-width:520px){ h1{font-size:22px} body{padding:14px} }
+  </style>
 </head>
+
 <body>
-<h1>Apa itu Guinea Pig?</h1>
+  <div class="wrap" role="main" aria-label="Apa itu Guinea Pig">
+    <header>
+      <div class="brand" aria-hidden="false">
+        <div class="emoji">🐹</div>
+        <div>Yoru & Mochi</div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="/index.html">Home</a>
+        <a href="/cute-guinea-pig-videos/">Video</a>
+        <a href="/story.html">Kisah</a>
+      </nav>
+    </header>
 
-<p>Guinea pig adalah hewan pengerat kecil yang populer sebagai peliharaan karena sifatnya yang tenang dan bersahabat. Mereka tidak menggigit kecuali merasa sangat takut, dan sangat menyukai sayuran segar serta rumput kering (hay).</p>
+    <article itemscope itemtype="https://schema.org/Article" aria-labelledby="title">
+      <h1 id="title" itemprop="headline">Apa itu Guinea Pig?</h1>
+      <p class="lead" itemprop="description">Panduan singkat untuk pemula: kenali apa itu guinea pig, sifat, dan kebutuhan dasar mereka.</p>
 
-<p>Untuk tempat tinggal, kandang yang cukup luas dan alas lembut sangat dianjurkan. Mereka juga senang berinteraksi lembut dengan pemiliknya. Perawatannya relatif mudah sehingga cocok untuk pemula yang ingin memelihara hewan lucu.</p>
+      <div class="content" itemprop="articleBody">
+        <p>Guinea pig adalah hewan pengerat kecil yang populer sebagai peliharaan karena sifatnya yang tenang dan bersahabat. Mereka jarang menggigit kecuali merasa sangat takut, dan sangat menyukai sayuran segar serta rumput kering (hay).</p>
 
-<p><a href="/tips-merawat-guinea-pig">Tips merawat guinea pig</a></p>
+        <p>Untuk tempat tinggal, kandang yang cukup luas dan alas lembut sangat dianjurkan. Mereka juga senang berinteraksi lembut dengan pemiliknya. Perawatannya relatif mudah sehingga cocok untuk pemula yang ingin memelihara hewan lucu.</p>
+
+        <p>Jika ingin pelihara guinea pig, siapkan waktu untuk interaksi dan kebersihan kandang rutin — ini kunci supaya mereka sehat dan bahagia.</p>
+
+        <p>
+          <a class="cta-link" href="/tips-merawat-guinea-pig">Baca juga: Tips merawat guinea pig →</a>
+        </p>
+
+        <p style="margin-top:18px;color:#9fb0c8;font-size:14px">
+          Untuk video lucu dan momen Yoru & Mochi, kunjungi galeri video kami:
+          <br><a class="cta-link" href="/cute-guinea-pig-videos/" style="display:inline-block;margin-top:8px">Cute Guinea Pig Videos →</a>
+        </p>
+      </div>
+    </article>
+
+    <footer>
+      © <span id="year"></span> Yoru & Mochi
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
