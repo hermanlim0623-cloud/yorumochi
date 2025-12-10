@@ -311,11 +311,11 @@
         <button class="nav-button prev" type="button" aria-label="Previous slide">‹</button>
         <button class="nav-button next" type="button" aria-label="Next slide">›</button>
 
-        <div class="pagination" role="tablist" aria-label="Slide navigation">
-          <button class="pagination-dot active" type="button" aria-label="Go to slide 1"></button>
-          <button class="pagination-dot" type="button" aria-label="Go to slide 2"></button>
-          <button class="pagination-dot" type="button" aria-label="Go to slide 3"></button>
-        </div>
+        <nav class="pagination" aria-label="Slide navigation">
+  <button class="pagination-dot active" type="button" data-index="0" aria-label="Go to slide 1" aria-current="true"></button>
+  <button class="pagination-dot" type="button" data-index="1" aria-label="Go to slide 2"></button>
+  <button class="pagination-dot" type="button" data-index="2" aria-label="Go to slide 3"></button>
+</nav>
 
         <!-- === START: Internal Links Section (SEO) === -->
         <section id="articles" style="margin:24px 0 8px; padding-top:6px; border-top:1px solid rgba(0,0,0,0.04);">
@@ -518,5 +518,63 @@
       document.addEventListener('DOMContentLoaded', ()=>{ window._slider = new Slider(); });
     })();
   </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const dots = Array.from(document.querySelectorAll('.pagination .pagination-dot'));
+  function setActiveDot(activeIndex){
+    dots.forEach((dot,i)=>{
+      if(i===activeIndex){
+        dot.classList.add('active');
+        dot.setAttribute('aria-current','true');
+      } else {
+        dot.classList.remove('active');
+        dot.removeAttribute('aria-current');
+      }
+    });
+  }
+  function goTo(index){
+    // Try common global slider instances
+    try {
+      if (window.slider && typeof window.slider.go === 'function') { window.slider.go(index); setActiveDot(index); return; }
+      if (window.mySlider && typeof window.mySlider.go === 'function') { window.mySlider.go(index); setActiveDot(index); return; }
+      if (window.Slider && typeof window.Slider.prototype === 'object' && typeof window.Slider.prototype.go === 'function') { 
+        // no instance known; skip
+      }
+    } catch(e){ /* ignore */ }
+    // Fallback: translate track if exists
+    const track = document.querySelector('.carousel-track, .track, .slides');
+    if (track){
+      const slides = Array.from(track.children || []);
+      if (slides.length){
+        track.style.transform = `translateX(${-index * 100}%)`;
+        setActiveDot(index);
+        // also update any active classes on slides if present
+        slides.forEach((s,i)=> {
+          s.classList.toggle('active', i===index);
+        });
+        // emit slideChanged event for any listeners
+        document.dispatchEvent(new CustomEvent('slideChanged', {detail: index}));
+        return;
+      }
+    }
+    // If nothing else, just set active dot
+    setActiveDot(index);
+  }
+  dots.forEach((dot)=>{
+    const idx = parseInt(dot.dataset.index,10);
+    dot.addEventListener('click', ()=> goTo(idx));
+    dot.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goTo(idx); }
+      if (e.key === 'ArrowRight'){ e.preventDefault(); const next=(idx+1)%dots.length; dots[next].focus(); goTo(next); }
+      if (e.key === 'ArrowLeft'){ e.preventDefault(); const prev=(idx-1+dots.length)%dots.length; dots[prev].focus(); goTo(prev); }
+    });
+  });
+  // init active
+  const init = dots.findIndex(d=>d.classList.contains('active'));
+  if (init>=0) setActiveDot(init);
+});
+</script>
+
 </body>
 </html>
