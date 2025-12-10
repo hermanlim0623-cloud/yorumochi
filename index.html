@@ -225,9 +225,63 @@
     @media (min-width:421px){ .nav-button.prev{ left: -18px; } .nav-button.next{ right: -18px; } }
     @media (max-width:420px){ .nav-button.prev{ left:8px; } .nav-button.next{ right:8px; top:50%; transform:translateY(-50%); width:34px; height:34px; font-size:15px; } }
 
-    .pagination{ display:flex; justify-content:center; gap:0.5rem; margin-top:10px; }
-    .pagination-dot{ width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.8); border:none; box-shadow:0 3px 8px rgba(20,30,40,0.08); cursor:pointer; transition:transform .18s ease, background .18s ease; }
-    .pagination-dot.active{ background:var(--dot); transform:scale(1.18); }
+    
+    
+/* Pagination: small visual dot, large touch target (14px visual, ~44px hit area) */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.pagination-dot {
+  position: relative;
+  width: 14px;          /* visual dot */
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  border: none;
+  /* enlarge hit area without changing visual size */
+  padding: 15px;         /* 14 + (2*15) padding approximates 44+ hit area */
+  box-sizing: content-box;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.pagination-dot::after{
+  /* ensure visual dot stays 14px, using pseudo element for precise control */
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.pagination-dot.active::after {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 18px rgba(255, 220, 120, 0.55),   /* outer warm glow */
+    0 8px 22px rgba(20, 30, 40, 0.12);     /* subtle depth shadow */
+  background: var(--dot, #ffd88a);         /* fallback warna bila --dot tidak ada */
+}
+
+.pagination-dot:focus {
+  outline: 2px solid rgba(0,0,0,0.12);
+  outline-offset: 3px;
+}
+
+    .pagination-dot:focus{
+      outline: 2px solid rgba(0,0,0,0.12);
+      outline-offset: 3px;
+    }
+
 
     .footer{ display:none !important; }
 
