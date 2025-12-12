@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
     <loc>https://yorumochi.com/</loc>
     <lastmod>2025-12-13</lastmod>
@@ -8,7 +9,7 @@
     <priority>1.00</priority>
   </url>
 
-  <!-- Brand / About (official) -->
+  <!-- Official Brand Pages -->
   <url>
     <loc>https://yorumochi.com/about_yorumochi.html</loc>
     <lastmod>2025-12-13</lastmod>
@@ -16,7 +17,35 @@
     <priority>0.95</priority>
   </url>
 
-  <!-- Keep legacy/about.html if it exists (lower priority) -->
+  <url>
+    <loc>https://yorumochi.com/what-is-yorumochi.html</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://yorumochi.com/who-are-yoru-and-mochi.html</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://yorumochi.com/yorumochi-brand-mission.html</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://yorumochi.com/official-socials.html</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Legacy about page -->
   <url>
     <loc>https://yorumochi.com/about.html</loc>
     <lastmod>2025-12-04</lastmod>
@@ -24,7 +53,7 @@
     <priority>0.70</priority>
   </url>
 
-  <!-- Main content sections -->
+  <!-- Main Video Content Sections -->
   <url>
     <loc>https://yorumochi.com/cute-guinea-pig-videos/</loc>
     <lastmod>2025-12-06</lastmod>
@@ -53,7 +82,7 @@
     <priority>0.75</priority>
   </url>
 
-  <!-- Core pages -->
+  <!-- Core Pages -->
   <url>
     <loc>https://yorumochi.com/story</loc>
     <lastmod>2025-12-04</lastmod>
@@ -68,7 +97,7 @@
     <priority>0.60</priority>
   </url>
 
-  <!-- Article pages (keep, with appropriate priority) -->
+  <!-- Articles -->
   <url>
     <loc>https://yorumochi.com/apa-itu-guinea-pig</loc>
     <lastmod>2025-12-08</lastmod>
