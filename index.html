@@ -34,7 +34,6 @@
   <!-- Preload images untuk prioritas muat (biarkan hanya yang dipakai segera) -->
   <link rel="preload" as="image" href="/images/pet1.webp">
   <link rel="preload" as="image" href="/images/pet2.webp">
-  <!-- NOTE: yoru_mochi_og.png preload dihapus untuk menghindari warning jika tidak dipakai langsung -->
 
   <!-- Optional: favicons -->
   <link rel="icon" href="/favicon.ico" />
@@ -63,7 +62,7 @@
     :root { --vh: 1vh; }
 
     /* HIDE: sembunyikan seluruh section Artikel Terbaru */
-#articles { display: none !important; }
+    #articles { display: none !important; }
 
     /* BODY fallback gradient (di bawah pattern) */
     body{
@@ -93,20 +92,18 @@
       background:transparent;
     }
 
-    /* Revised pattern tile styling (muted + subtle shadow + rounded) */
     .pattern-tile{
       position:absolute;
-      background-size:cover;        /* cover agar tile tampak rapi */
+      background-size:cover;
       background-position:center;
       border-radius:14%;
-      opacity:0.88;                 /* mute agar tidak mendistraksi */
+      opacity:0.88;
       transition: opacity .24s ease, transform .24s ease;
       filter: drop-shadow(0 8px 18px rgba(15,22,28,0.06)) saturate(0.95);
       will-change: transform, opacity;
       pointer-events: none;
     }
 
-    /* overlay di atas pattern agar card terbaca (kurangi kontras pattern) */
     .pattern-overlay{
       position: fixed;
       inset: 0;
@@ -125,60 +122,12 @@
       padding-top:env(safe-area-inset-top, 0px);
       padding-bottom:env(safe-area-inset-bottom, 0px);
       position:relative;
-      z-index:3; /* di atas pattern & overlay */
+      z-index:3;
     }
 
-    /* dekoratif pet - masih ada (posisi fixed) */
-    .decor-pet{
-      position:fixed;
-      pointer-events:none;
-      user-select:none;
-      z-index:6;
-      opacity:0;
-      will-change:transform,opacity;
-      filter: drop-shadow(0 18px 36px rgba(15,25,35,0.08));
-      transition: opacity 180ms linear;
-      display:block;
-    }
-    .decor-pet.visible{ opacity:1; }
-
-    .pet-top{
-      top:6%;
-      left:4%;
-      width:16vw;
-      max-width:160px;
-      min-width:80px;
-      animation:petFloatRight 26s linear infinite;
-    }
-    .pet-bottom{
-      right:4%;
-      bottom:6%;
-      width:18vw;
-      max-width:180px;
-      min-width:90px;
-      animation:petFloatLeft 28s linear infinite;
-      animation-delay:-4s;
-    }
-    @keyframes petFloatRight{ 0%{transform:translate3d(0,0,0)}25%{transform:translate3d(6vw,-6px,0) scale(1.02)}50%{transform:translate3d(0,-3px,0) scale(.99)}75%{transform:translate3d(4vw,-8px,0) scale(1.01)}100%{transform:translate3d(0,0,0)} }
-    @keyframes petFloatLeft{ 0%{transform:translate3d(0,0,0)}25%{transform:translate3d(-6vw,6px,0) scale(1.02)}50%{transform:translate3d(0,3px,0) scale(.99)}75%{transform:translate3d(-4vw,8px,0) scale(1.01)}100%{transform:translate3d(0,0,0)} }
-
-    @media (max-width:420px){
-      .pet-top{ width:26vw; max-width:120px; top:4%; left:6%; }
-      .pet-bottom{ width:30vw; max-width:130px; right:6px; bottom:4%; }
-      /* pattern tile size on very small screens will be set by JS, this is fallback */
-      .pattern-tile{ width:70px; height:70px; }
-    }
-
-    /* Decorative blobs behind */
-    body::before, body::after{ content:''; position:fixed; border-radius:50%; filter:blur(36px); opacity:0.65; pointer-events:none; z-index:0; }
-    body::before{ width:260px;height:260px; left:8%; top:6%; background:radial-gradient(circle,#d8f3ff,#d8f3ff00); }
-    body::after{ width:220px;height:220px; right:6%; bottom:8%; background:radial-gradient(circle,#ffdfe3,#ffdfe300); }
-
-    /* main card */
-    .wrap{ width:100%; max-width:380px; width: min(92vw, 380px); padding:16px; position:relative; z-index:2; margin:0 auto; box-sizing:border-box; }
     .card{
       position:relative;
-      background:#ffffff; /* full white supaya kontras */
+      background:#ffffff;
       border-radius:20px;
       padding:22px 18px 18px;
       box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,0.85);
@@ -189,10 +138,7 @@
       min-height:360px;
       color:var(--text-dark);
     }
-.card::before{
-  display: none !important;
-  content: none !important;
-}
+    .card::before{ display: none !important; content: none !important; }
     .card::after{
       content:'';
       position:absolute;
@@ -209,7 +155,6 @@
     p.lead{ margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
     .meta{ color:#56626b; font-weight:600; margin-top:8px; font-size:13px; }
 
-    /* carousel */
     .carousel-container{ position:relative; width:100%; margin-top:18px; border-radius:16px; overflow:hidden; padding:8px 0 6px; height:260px; }
     .carousel-track{ display:flex; width:100%; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change:transform; height:100%; }
     .carousel-slide{ min-width:100%; flex:0 0 100%; display:flex; align-items:center; justify-content:center; padding:0 6px 4px; box-sizing:border-box; text-align:center; height:100%; }
@@ -225,65 +170,21 @@
     @media (min-width:421px){ .nav-button.prev{ left: -18px; } .nav-button.next{ right: -18px; } }
     @media (max-width:420px){ .nav-button.prev{ left:8px; } .nav-button.next{ right:8px; top:50%; transform:translateY(-50%); width:34px; height:34px; font-size:15px; } }
 
-    
-    
-/* Pagination: small visual dot, large touch target (14px visual, ~44px hit area) */
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  padding: 10px 0;
-  align-items: center;
-}
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; gap: 12px; padding: 10px 0; align-items: center; }
+    .pagination-dot { position: relative; width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.85); border: none; padding: 15px; box-sizing: content-box; margin: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+    .pagination-dot::after{ content: ""; display: block; width: 14px; height: 14px; border-radius: 50%; background: inherit; }
+    .pagination-dot.active::after { transform: scale(1.08); box-shadow: 0 0 18px rgba(255, 220, 120, 0.55), 0 8px 22px rgba(20, 30, 40, 0.12); background: var(--dot, #ffd88a); }
+    .pagination-dot:focus{ outline: 2px solid rgba(0,0,0,0.12); outline-offset: 3px; }
 
-.pagination-dot {
-  position: relative;
-  width: 14px;          /* visual dot */
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.85);
-  border: none;
-  /* enlarge hit area without changing visual size */
-  padding: 15px;         /* 14 + (2*15) padding approximates 44+ hit area */
-  box-sizing: content-box;
-  margin: 0;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
-}
-
-.pagination-dot::after{
-  /* ensure visual dot stays 14px, using pseudo element for precise control */
-  content: "";
-  display: block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: inherit;
-}
-
-.pagination-dot.active::after {
-  transform: scale(1.08);
-  box-shadow:
-    0 0 18px rgba(255, 220, 120, 0.55),   /* outer warm glow */
-    0 8px 22px rgba(20, 30, 40, 0.12);     /* subtle depth shadow */
-  background: var(--dot, #ffd88a);         /* fallback warna bila --dot tidak ada */
-}
-
-.pagination-dot:focus {
-  outline: 2px solid rgba(0,0,0,0.12);
-  outline-offset: 3px;
-}
-
-    .pagination-dot:focus{
-      outline: 2px solid rgba(0,0,0,0.12);
-      outline-offset: 3px;
+    /* Footer: visible and minimal (only About link shown) */
+    .footer{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+      margin-top:18px;
     }
-
-
-    .footer{ display:none !important; }
 
     @media (max-width:420px){
       body{ padding:12px; }
@@ -366,12 +267,12 @@
         <button class="nav-button next" type="button" aria-label="Next slide">›</button>
 
         <nav class="pagination" aria-label="Slide navigation">
-  <button class="pagination-dot active" type="button" data-index="0" aria-label="Go to slide 1" aria-current="true"></button>
-  <button class="pagination-dot" type="button" data-index="1" aria-label="Go to slide 2"></button>
-  <button class="pagination-dot" type="button" data-index="2" aria-label="Go to slide 3"></button>
-</nav>
+          <button class="pagination-dot active" type="button" data-index="0" aria-label="Go to slide 1" aria-current="true"></button>
+          <button class="pagination-dot" type="button" data-index="1" aria-label="Go to slide 2"></button>
+          <button class="pagination-dot" type="button" data-index="2" aria-label="Go to slide 3"></button>
+        </nav>
 
-        <!-- === START: Internal Links Section (SEO) === -->
+        <!-- Article list kept in HTML but hidden via CSS (#articles display:none) -->
         <section id="articles" style="margin:24px 0 8px; padding-top:6px; border-top:1px solid rgba(0,0,0,0.04);">
           <h2 style="font-size:15px;margin:8px 0 8px;color:var(--text-dark);">Artikel Terbaru</h2>
           <ul style="padding-left:18px;margin:0;color:var(--muted);line-height:1.6;font-size:14px;">
@@ -383,9 +284,12 @@
             <li><a href="/mitos-tentang-guinea-pig" style="color:inherit;text-decoration:none;">Mitos Tentang Guinea Pig</a></li>
           </ul>
         </section>
-        <!-- === END: Internal Links Section (SEO) === -->
 
-        <div class="footer">Made with ♥ • Yoru & Mochi — Lightweight landing • <a href="/sitemap.xml" style="color:var(--muted);text-decoration:none">Sitemap</a></div>
+        <!-- Footer: only About link is shown (as requested) -->
+        <div class="footer">
+          Made with ♥ • Yoru & Mochi — 
+          <a href="/about_yorumochi.html" style="color:var(--muted);text-decoration:none">About YoruMochi</a>
+        </div>
       </div>
     </div>
   </div>
@@ -402,10 +306,7 @@
       const IMG2 = 'images/pet2.webp';
       const RAW_BASE = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
 
-      // Opsi: true = staggered (brick), false = simple checkerboard
       const STAGGERED = true;
-
-      // ukuran tile + gap rekomendasi (desktop / tablet / mobile)
       const TILE_DESKTOP = 110, GAP_DESKTOP = 20;
       const TILE_TABLET  = 90,  GAP_TABLET  = 16;
       const TILE_MOBILE  = 70,  GAP_MOBILE  = 12;
@@ -420,50 +321,34 @@
         const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
         const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-        // pilih ukuran berdasarkan viewport
         if (vw <= 420) { tileSize = TILE_MOBILE; gap = GAP_MOBILE; }
         else if (vw <= 900) { tileSize = TILE_TABLET; gap = GAP_TABLET; }
         else { tileSize = TILE_DESKTOP; gap = GAP_DESKTOP; }
 
         const stride = tileSize + gap;
-
-        // untuk staggered, tambahkan kolom ekstra agar tidak ada celah di tepi
         const cols = Math.ceil(vw / stride) + (STAGGERED ? 2 : 1);
         const rows = Math.ceil(vh / stride) + 1;
-
-        // center offset supaya pattern tidak mulai persis di (0,0)
         const totalWidth = cols * stride;
         const totalHeight = rows * stride;
         const offsetX = Math.round((vw - totalWidth) / 2);
         const offsetY = Math.round((vh - totalHeight) / 2);
 
         for (let r = 0; r < rows; r++){
-          // shift baris ganjil setengah stride saat staggered
           const rowShift = (STAGGERED && (r % 2 === 1)) ? Math.round(stride/2) : 0;
-
           for (let c = 0; c < cols; c++){
             const el = document.createElement('div');
             el.className = 'pattern-tile';
             el.style.width = tileSize + 'px';
             el.style.height = tileSize + 'px';
-
-            // posisi termasuk shift baris
             el.style.left = (c * stride + offsetX + rowShift) + 'px';
             el.style.top  = (r * stride + offsetY) + 'px';
-
-            // Pilih gambar: alternating menggunakan (r + c)
             const useFirst = ((r + c) % 2 === 0);
             el.style.backgroundImage = useFirst ? `url("${IMG1}")` : `url("${IMG2}")`;
-
-            // sedikit variasi rotasi (opsional, kecil)
-            const rot = (Math.random() - 0.5) * 6; // -3 .. +3 derajat
+            const rot = (Math.random() - 0.5) * 6;
             el.style.transform = `rotate(${rot}deg)`;
-
             container.appendChild(el);
           }
         }
-
-        // fallback images check
         testImagesAndFallback();
       }
 
@@ -486,7 +371,6 @@
         });
       }
 
-      // rebuild on resize + initial build with rAF debounce
       let rAF;
       function onResize(){
         if(rAF) cancelAnimationFrame(rAF);
@@ -500,7 +384,7 @@
       }
     })();
 
-    // pet decorative images: show quickly and fallback to GH if local missing
+    // pet decorative images fallback
     (function(){
       const baseRaw = 'https://raw.githubusercontent.com/hermanlim0623-cloud/yorumochi/main/images/';
       [['pet1','pet1.webp'], ['pet2','pet2.webp']].forEach(([id,file])=>{
@@ -539,7 +423,7 @@
       }
     })();
 
-    // slider (same logic)
+    // slider
     (function(){
       class Slider {
         constructor(options = {}) {
@@ -588,31 +472,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
   function goTo(index){
-    // Try common global slider instances
     try {
       if (window.slider && typeof window.slider.go === 'function') { window.slider.go(index); setActiveDot(index); return; }
       if (window.mySlider && typeof window.mySlider.go === 'function') { window.mySlider.go(index); setActiveDot(index); return; }
-      if (window.Slider && typeof window.Slider.prototype === 'object' && typeof window.Slider.prototype.go === 'function') { 
-        // no instance known; skip
-      }
-    } catch(e){ /* ignore */ }
-    // Fallback: translate track if exists
+      if (window.Slider && typeof window.Slider.prototype === 'object' && typeof window.Slider.prototype.go === 'function') { }
+    } catch(e){ }
     const track = document.querySelector('.carousel-track, .track, .slides');
     if (track){
       const slides = Array.from(track.children || []);
       if (slides.length){
         track.style.transform = `translateX(${-index * 100}%)`;
         setActiveDot(index);
-        // also update any active classes on slides if present
-        slides.forEach((s,i)=> {
-          s.classList.toggle('active', i===index);
-        });
-        // emit slideChanged event for any listeners
+        slides.forEach((s,i)=> { s.classList.toggle('active', i===index); });
         document.dispatchEvent(new CustomEvent('slideChanged', {detail: index}));
         return;
       }
     }
-    // If nothing else, just set active dot
     setActiveDot(index);
   }
   dots.forEach((dot)=>{
@@ -624,7 +499,6 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.key === 'ArrowLeft'){ e.preventDefault(); const prev=(idx-1+dots.length)%dots.length; dots[prev].focus(); goTo(prev); }
     });
   });
-  // init active
   const init = dots.findIndex(d=>d.classList.contains('active'));
   if (init>=0) setActiveDot(init);
 });
