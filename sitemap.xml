@@ -140,4 +140,14 @@
     <priority>0.55</priority>
   </url>
 
+  <url>
+  <loc>https://yorumochi.com/why-yoru-and-mochi-feel-different.html</loc>
+  <priority>0.8</priority>
+  </url>
+  
+  <url>
+  <loc>https://yorumochi.com/meet-yoru-and-mochi-personality.html</loc>
+  <priority>0.8</priority>
+  </url>
+
 </urlset>
